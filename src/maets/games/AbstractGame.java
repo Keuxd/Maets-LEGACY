@@ -20,9 +20,9 @@ public abstract class AbstractGame {
 		this.defaultRemoteSavePath = defaultRemoteSavePath;
 	}
 	
-	public abstract void download();
+	public abstract void download() throws Exception;
 
-	public abstract void install();
+	public abstract void install() throws Exception;
 	
 	public void updateRemoteSave(boolean createBackupSave) throws MegaException {
 		String pathToRemove = (createBackupSave) ? "/Backup/" : "/Current/" ;
