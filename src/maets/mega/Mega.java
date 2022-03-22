@@ -15,6 +15,8 @@ public class Mega {
 	
 	private static CMD cmd;
 	
+	private Mega() {}
+	
 	public static void init() throws MegaException {
 		if(cmd == null) {
 			cmd = new CMD();
