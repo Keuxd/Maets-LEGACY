@@ -2,30 +2,42 @@ package maets.download;
 
 public class SizeScaleManager {
 	
-	private int b;
-	private int kb;
-	private int mb;
-	private int gb;
+	private long bytes;
+	private long totalSizeInBytes;
 	
-	private double percentageCalculation;
-	private double eachPercentage;
-	
-	public SizeScaleManager(long totalSizeInB) {
-		this.b = 0;
-		this.kb = 0;
-		this.mb = 0;
-		this.gb = 0;
-	
-		
-		eachPercentage = 100000.0 / totalSizeInB;
-		percentageCalculation = eachPercentage;
+	public SizeScaleManager(long totalSizeInBytes) {
+		this.bytes = 0;
+		this.totalSizeInBytes = totalSizeInBytes;
 	}
 	
-	private void updateValues() {
-		int bTimes = b / 1000;
+	protected void add(int bytesAdded) {
+		bytes += bytesAdded;
+	}
+	
+	protected void add(long bytesAdded) {
+		bytes += bytesAdded;
+	}
+	
+	protected void setBytes(long bytes) {
+		this.bytes = bytes;
+	}
+	
+	protected boolean isFinished() {
+		if(totalSizeInBytes == bytes) return true;
+		else return false;
+	}
+	
+	@Override
+	public String toString() {
+		long bytes = this.bytes;
+		int kb = 0;
+		int mb = 0;
+		int gb = 0;
+		
+		long bTimes = bytes / 1000;
 		for(int i = 0; i < bTimes; i++)
 			kb++;
-		b -= (bTimes * 1000);
+		bytes -= (bTimes * 1000);
 		
 		int kbTimes = kb / 1000;
 		for(int i = 0; i < kbTimes; i++)
@@ -37,19 +49,9 @@ public class SizeScaleManager {
 			gb++;
 		
 		mb -= (mbTimes * 1000);
-	}
-	
-	private void updatePercentage() {
-		percentageCalculation += eachPercentage;
-	}
-	
-	protected void add(int bytesAdded) {
-		b += bytesAdded;
-		updateValues();
-		updatePercentage();
-	}
-	
-	public String getSize() {
-		return String.format("(%.2f %%) GB: %d | MB: %d | KB: %d | B: %d", percentageCalculation, gb, mb, kb, b);
+		
+		double percentage = (this.bytes * 100.0) / totalSizeInBytes;
+		
+		return String.format("(%.2f %%) GB: %d | MB: %d | KB: %d | B: %d", percentage, gb, mb, kb, bytes);
 	}
 }
