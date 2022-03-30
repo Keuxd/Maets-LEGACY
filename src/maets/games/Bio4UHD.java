@@ -15,4 +15,9 @@ public class Bio4UHD extends AbstractGame {
 	public void install() {
 		
 	}
+
+	@Override
+	public void uninstall() {
+
+	}
 }
