@@ -1,77 +1,57 @@
 package maets.games;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+import java.io.IOException;
 
-import maets.mega.Mega;
-import maets.mega.exceptions.MegaException;
-import maets.mega.exceptions.MegaInvalidRemotePathException;
+import com.github.junrar.Junrar;
+import com.github.junrar.exception.RarException;
 
-public class VampireSurvivors {
+import maets.download.AnonFiles;
 
-	private String defaultLocalSavePath;
-	private String defaultRemoteSavePath;
+public class VampireSurvivors extends AbstractGame {
+	
+	private final String DEFAULT_PATH = "C:\\Maets\\VampireSurvivors"; 
 	
 	public VampireSurvivors() {
-		defaultRemoteSavePath = "Maets/VampireSurvivors";
-		defaultLocalSavePath = System.getenv("APPDATA") + "\\Vampire_Survivors\\Local Storage";
+		super(System.getenv("APPDATA") + "\\Vampire_Survivors\\Local Storage","Local Storage","Maets/VampireSurvivors");
 	}
 	
-	public void updateRemoteSave(boolean createBackupSave) throws MegaException {
-		String pathToRemove = (createBackupSave) ? "/Backup/" : "/Current/" ;
+	@Override
+	public void download() throws IOException {
+		File dir = new File(DEFAULT_PATH);
+		dir.mkdirs();
 		
-		try {
-			Mega.remove(defaultRemoteSavePath + pathToRemove + "Local Storage/");
-		} catch(MegaInvalidRemotePathException e) { // It'll happen in the first remote saving call
-			System.out.println(e.getMessage() + " -> in updateRemoteState() trying to upload anyway");
-		} catch(MegaException e) {
-			e.printStackTrace();
+		AnonFiles.downloadFile("L9tae6Q7x6", DEFAULT_PATH + "\\VampireS.rar");
+	}
+
+	@Override
+	public void install() throws IOException, RarException {		
+		File rar = new File(DEFAULT_PATH).listFiles()[0];
+
+		System.out.println("Starting extraction...");
+		Junrar.extract(rar.getPath(), DEFAULT_PATH);
+		System.out.println("Finishing extraction...");
+		
+		if(rar.delete()) {
+			System.out.println("Rar file deleted successfully");
+		} else {
+			System.out.println("ERROR - Rar file not deleted");
 		}
-		
-		if(createBackupSave) {
-			try {
-				Mega.mkdir(defaultRemoteSavePath + pathToRemove); // This is always will be "/Backup/"
-				Mega.move(defaultRemoteSavePath + "/Current/Local Storage/", defaultRemoteSavePath + pathToRemove);
-			} catch(MegaInvalidRemotePathException e) {
-				System.out.println(e.getMessage() + " -> in updateRemoteState() backup version trying to upload anyway");
-			} catch(MegaException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		Mega.upload(defaultLocalSavePath, defaultRemoteSavePath + "/Current/", true);
 	}
 	
-	public void updateLocalSave() throws MegaException {
-		File localStorageFolder = Paths.get(defaultLocalSavePath).toFile();
-		if(localStorageFolder.exists()) {
-			if(!deleteDir(localStorageFolder)) {
-				System.out.println("ERROR - Local Storage folder exists, but couldn't be deleted, returning call");
-				return;
-			} else {
-				System.out.println("Local Storage folder exists, local save successfully deleted");
-			}
+	@Override
+	public void uninstall() {
+		if(deleteDir(new File(DEFAULT_PATH))) {
+			System.out.println("Vampire Survivors uninstalled successfully");
+		} else {
+			System.out.println("Error uninstalling Vampire Survivors");
 		}
-		
-		localStorageFolder.getParentFile().mkdirs();
-		Mega.download(defaultRemoteSavePath + "/Current/Local Storage/", localStorageFolder.getParent());
 	}
 	
-	private boolean deleteDir(File file) {
-		try {
-			File[] contents = file.listFiles();
-			if(contents != null) {
-				for(File f : contents) {
-					if(!Files.isSymbolicLink(f.toPath())) {
-						deleteDir(f);
-					}
-				}
-			}
-			file.delete();
-			return true;
-		} catch(Exception e) {
-			return false;
-		}
+	public void run() throws IOException {
+		String gameVersionFolderName = new File(DEFAULT_PATH).list()[0];
+		File gameFolder = new File(DEFAULT_PATH + "\\" + gameVersionFolderName + "\\" + gameVersionFolderName + "\\");
+		
+		Runtime.getRuntime().exec(gameFolder.getPath() + "\\VampireSurvivors.exe", null, gameFolder);
 	}
 }
