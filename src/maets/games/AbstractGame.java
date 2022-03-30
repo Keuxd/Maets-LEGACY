@@ -24,6 +24,8 @@ public abstract class AbstractGame {
 
 	public abstract void install() throws Exception;
 	
+	public abstract void uninstall();
+	
 	public void updateRemoteSave(boolean createBackupSave) throws MegaException {
 		String pathToRemove = (createBackupSave) ? "/Backup/" : "/Current/" ;
 		
@@ -64,7 +66,7 @@ public abstract class AbstractGame {
 		Mega.download(defaultRemoteSavePath + "/Current/" + saveFolderName + "/", localStorageFolder.getParent());
 	}
 
-	private boolean deleteDir(File file) {
+	protected boolean deleteDir(File file) {
 		try {
 			File[] contents = file.listFiles();
 			if(contents != null) {
