@@ -9,6 +9,7 @@ import maets.mega.exceptions.MegaInvalidRemotePathException;
 import maets.mega.exceptions.MegaInvalidStateException;
 import maets.mega.exceptions.MegaLoginFailedException;
 import maets.mega.exceptions.MegaNotLoggedInException;
+import maets.mega.exceptions.MegaUnconfirmedAccountException;
 import maets.mega.exceptions.MegaWrongArgumentsException;
 
 public class Mega {
@@ -36,6 +37,7 @@ public class Mega {
 	}
 	
 	public static void login(String email, String pwd) throws MegaException {
+		System.out.println("\nTrying to login...\nEmail: " + email + "\nPassword: " + pwd + "\n");
 		handleResponseCode(cmd.executeCommandWithLog(String.format("mega-login %s %s", email, pwd)), "Login");
 	}
 	
@@ -64,9 +66,27 @@ public class Mega {
 		handleResponseCode(cmd.executeCommandWithLog(String.format("mega-rm \"%s\" -r -f", remotePath)), "Remove");
 	}
 	
+	public static boolean isLoggedIn() {
+		try {
+			handleResponseCode(cmd.executeCommandWithLog(String.format("mega-users")), "Users");
+			return true;
+		} catch(MegaNotLoggedInException e) {
+			return false;
+		} catch(MegaException e) {
+			e.printStackTrace();
+			System.exit(-1);
+			return false;
+		}
+	}
+	
 	public static String getRemoteFileContent(String remotePath) throws MegaException {
 		handleResponseCode(cmd.executeCommandWithLog(String.format("mega-cat \"%s\"", remotePath)), "Print Content(CAT)");
 		return cmd.getOutputLog();
+	}
+	
+	public static String getUserName(String whichName) throws MegaException {
+		handleResponseCode(cmd.executeCommandWithLog(String.format("mega-userattr %s", whichName)), "UserAttr");
+		return cmd.getOutputLog().split("=")[1];
 	}
 	
 	private static void handleResponseCode(int code, String commandName) throws MegaException {
@@ -75,6 +95,7 @@ public class Mega {
 			case -2 : System.out.println(commandName + " is online, code -2"); return; // <- Server is already running, no prob
 			case 2 : throw new MegaInvalidArgumentsException();
 			case 9 : throw new MegaLoginFailedException();
+			case 13 : throw new MegaUnconfirmedAccountException();
 			case 51 : throw new MegaWrongArgumentsException();
 			case 53 : {
 				if(cmd.getOutputLog().contains("find"))
@@ -92,7 +113,10 @@ public class Mega {
 				if(cmd.getOutputLog().contains("No such directory"))
 					throw new MegaException("Resource not found - No such directory - Code: 53");
 				
-				System.out.println("\nCODE 53 BUT NO LOCAL, REMOTE OR NODE PROBLEMS\n");
+				if(cmd.getOutputLog().contains("Attribute not found"))
+					throw new MegaException("Invalid attribute in userattr(prob) - Code: 53");
+				
+				System.out.println("\nCODE 53 BUT UNKNOWN ERROR\n");
 				break;
 			}
 			case 54 : throw new MegaInvalidStateException();
