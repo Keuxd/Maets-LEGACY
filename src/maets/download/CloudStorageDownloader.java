@@ -27,6 +27,7 @@ public abstract class CloudStorageDownloader {
 			Files.copy(in, localPath, StandardCopyOption.REPLACE_EXISTING);
 		} catch(Exception e) {
 			System.out.println("Download failed, logging thread will be interrupted");
+			e.printStackTrace();
 			logThread.interrupt();
 		}
 	}
