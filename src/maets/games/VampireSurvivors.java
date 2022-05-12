@@ -1,12 +1,13 @@
 package maets.games;
 
 import java.io.File;
+import java.io.FilenameFilter;
 import java.io.IOException;
 
-import com.github.junrar.Junrar;
 import com.github.junrar.exception.RarException;
 
-import maets.download.AnonFiles;
+import maets.core.ExtractUtil;
+import maets.download.Drive;
 
 public class VampireSurvivors extends AbstractGame {
 	
@@ -21,15 +22,21 @@ public class VampireSurvivors extends AbstractGame {
 		File dir = new File(DEFAULT_PATH);
 		dir.mkdirs();
 		
-		AnonFiles.downloadFile("L9tae6Q7x6", DEFAULT_PATH + "\\VampireS.rar");
+//		AnonFiles.downloadFile("nfZd9cRcx9", DEFAULT_PATH + "\\VampireS.rar");
+		Drive.downloadFile("1IzGPOp8SNwejGs8n-86-xZCQRawGA3xR", DEFAULT_PATH + "\\VampireS.rar");
 	}
 
 	@Override
 	public void install() throws IOException, RarException {		
-		File rar = new File(DEFAULT_PATH).listFiles()[0];
+		File rar = new File(DEFAULT_PATH).listFiles(new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".rar");
+			}
+		})[0];
 
 		System.out.println("Starting extraction...");
-		Junrar.extract(rar.getPath(), DEFAULT_PATH);
+		ExtractUtil.extract(rar.getPath(), DEFAULT_PATH);
 		System.out.println("Finishing extraction...");
 		
 		if(rar.delete()) {
@@ -49,9 +56,16 @@ public class VampireSurvivors extends AbstractGame {
 	}
 	
 	public void run() throws IOException {
-		String gameVersionFolderName = new File(DEFAULT_PATH).list()[0];
-		File gameFolder = new File(DEFAULT_PATH + "\\" + gameVersionFolderName + "\\" + gameVersionFolderName + "\\");
+		FilenameFilter dirFilter = new FilenameFilter() {
+			@Override
+			public boolean accept(File dir, String name) {
+				return dir.isDirectory();
+			}
+		};
 		
-		Runtime.getRuntime().exec(gameFolder.getPath() + "\\VampireSurvivors.exe", null, gameFolder);
+		File firstGameFolder = new File(DEFAULT_PATH).listFiles(dirFilter)[0];
+		File secondGameFolder = firstGameFolder.listFiles(dirFilter)[0];
+		
+		Runtime.getRuntime().exec(secondGameFolder.getPath() + "\\VampireSurvivors.exe", null, secondGameFolder);
 	}
 }
