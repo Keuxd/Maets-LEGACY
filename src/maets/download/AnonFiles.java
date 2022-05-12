@@ -13,7 +13,7 @@ public class AnonFiles extends CloudStorageDownloader {
 
 	public static boolean isAnonFileAvailable(String fileId) throws IOException {
 		try {
-			int linkIndex = SocketConnection.getURLSource("https://anonfiles.com/" + fileId).indexOf("https://cdn-");
+			int linkIndex = SocketConnection.getAllLinesFromInputStream(SocketConnection.getURLSource("https://anonfiles.com/" + fileId)).indexOf("https://cdn-");
 			
 			if(linkIndex == -1) return false;
 			else return true;
@@ -23,10 +23,10 @@ public class AnonFiles extends CloudStorageDownloader {
 	}
 	
 	private static String getAnonDownloadLink(String anonLink) throws IOException {
-		String html = SocketConnection.getURLSource(anonLink);
-		int linkIndex = html.indexOf("https://cdn-");
+		String line = SocketConnection.findLineInInputStreamWhichContains(SocketConnection.getURLSource(anonLink), "https://cdn-");
+		int linkIndex = line.indexOf("https://cdn-");
 		
-		String link = html.substring(linkIndex).split("\"")[0];
+		String link = line.substring(linkIndex).split("\"")[0];
 		
 		return link;
 	}
