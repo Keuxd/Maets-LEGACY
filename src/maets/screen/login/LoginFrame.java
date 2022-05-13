@@ -64,16 +64,19 @@ public class LoginFrame extends JFrame {
 		a.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 1));
 		
 		JLabel loginLabel = new JLabel("Log in");
+		loginLabel.setForeground(new Color(227, 229, 232));
 		loginLabel.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 50));
 		loginLabel.setBounds(170, 11, 150, 70);
 		getContentPane().add(loginLabel);
 		
 		JLabel yourEmailLabel = new JLabel("Your Email");
+		yourEmailLabel.setForeground(new Color(227, 229, 232));
 		yourEmailLabel.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 40));
 		yourEmailLabel.setBounds(95, 148, 200, 40);
 		getContentPane().add(yourEmailLabel);
 		
 		JLabel pwdLabel = new JLabel("Password");
+		pwdLabel.setForeground(new Color(227, 229, 232));
 		pwdLabel.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 40));
 		pwdLabel.setBounds(95, 248, 200, 40);
 		getContentPane().add(pwdLabel);
@@ -91,6 +94,7 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(warningPassword);		
 
 		JButton loginButton = new JButton("Log in");
+		loginButton.setForeground(new Color(227, 229, 232));
 		loginButton.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 25));
 		loginButton.setBounds(255, 350, 140, 46);
 		loginButton.addActionListener(new ActionListener() {
@@ -187,6 +191,7 @@ public class LoginFrame extends JFrame {
 		
 		int defaultEchoChar = passwordField.getEchoChar();
 		JCheckBox showPasswordCheckBox = new JCheckBox(" Show password");
+		showPasswordCheckBox.setForeground(new Color(227, 229, 232));
 		showPasswordCheckBox.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
 		showPasswordCheckBox.setBounds(95, 350, 154, 46);
 		showPasswordCheckBox.addItemListener(new ItemListener() {
@@ -221,6 +226,7 @@ public class LoginFrame extends JFrame {
 	private void showErrorMessage(String error) {
 		switchPanel(mainContainer);
 		JLabel errorMessage = new JLabel(error);
+		errorMessage.setForeground(new Color(227, 229, 232));
 		errorMessage.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
 		JOptionPane.showMessageDialog(null, errorMessage, null, JOptionPane.ERROR_MESSAGE);
 	}
