@@ -15,11 +15,13 @@ public class TimePanel extends JPanel {
 
 	private static final long serialVersionUID = 6045759015224652453L;
 
-	private Timer timer;
+	private DateTimeFormatter dtf;
 	
 	public TimePanel() {
 		setLayout(null);
 		setBounds(1627, 0, 293, 200);
+
+		dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 		
 		JLabel timeLabel = new JLabel(getTime());
 		timeLabel.setFont(new Font("Nirmala UI Semilight", Font.PLAIN, 45));
@@ -27,7 +29,8 @@ public class TimePanel extends JPanel {
 		timeLabel.setBounds(0, 32, 200, 130);
 		add(timeLabel);
 		
-		timer = new Timer(1000, new ActionListener() {
+		
+		Timer timer = new Timer(1000, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				timeLabel.setText(getTime());
@@ -38,7 +41,6 @@ public class TimePanel extends JPanel {
 	}
 	
 	private String getTime() {
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("HH:mm:ss");
 		LocalDateTime now = LocalDateTime.now();
 		return dtf.format(now);
 	}
