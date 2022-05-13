@@ -30,7 +30,7 @@ public class MainFrame extends JFrame {
 			upperPanel = new UpperPanel(this);
 		} catch(MegaException e1) {
 			Main.unexpectedError(e1.getMessage(), this);
-		}
+		}		
 		getContentPane().add(upperPanel);
 		
 		JPanel midPannel = new JPanel();
