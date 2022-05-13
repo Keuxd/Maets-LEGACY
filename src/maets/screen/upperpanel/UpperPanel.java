@@ -16,13 +16,13 @@ public class UpperPanel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1920, 200);
 		
-		JPanel up = new UserPanel(parentFrame);
-		add(up);
+		JPanel userPanel = new UserPanel(parentFrame);
+		add(userPanel);
 		
-		JPanel tbp = new TaskBarPanel(parentFrame);
-		add(tbp);
+		JPanel taskBarPanel = new TaskBarPanel(parentFrame);
+		add(taskBarPanel);
 		
-		JPanel tp = new TimePanel();
-		add(tp);
+		JPanel timePanel = new TimePanel();
+		add(timePanel);
 	}
 }
