@@ -11,6 +11,6 @@ public class TaskBarPanel extends JPanel {
 	
 	public TaskBarPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
-		setBounds(1320, 0, 307, 200);
+		setBounds(1220, 0, 407, 200);
 	}
 }

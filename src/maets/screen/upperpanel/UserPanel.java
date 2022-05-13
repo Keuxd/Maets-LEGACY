@@ -30,7 +30,7 @@ public class UserPanel extends JPanel {
 	public UserPanel(JFrame parentFrame) throws MegaException {
 		this.parentFrame = parentFrame;
 		setLayout(null);
-		setBounds(0, 0, 1320, 200);
+		setBounds(0, 0, 1220, 200);
 		
 		ImageIcon userImage = new ImageIcon(new ImageIcon(UserPanel.class.getResource("/resources/person-512.png")).getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
 		JLabel userImageLabel = new JLabel(userImage);
