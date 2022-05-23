@@ -1,9 +1,12 @@
 package maets.screen;
 
+import java.awt.Component;
 import java.awt.Graphics2D;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 import java.awt.Image;
+import java.awt.MouseInfo;
+import java.awt.Point;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
@@ -53,6 +56,17 @@ public class MainFrame extends JFrame {
 	    g2d.dispose();
 	    
 	    return dimg;
+	}
+	
+	public static boolean isMouseWithinComponent(Component c) {
+		try {
+		    Point mousePos = MouseInfo.getPointerInfo().getLocation();
+		    Rectangle bounds = c.getBounds();
+		    bounds.setLocation(c.getLocationOnScreen());
+		    return bounds.contains(mousePos);
+		} catch(Exception e) {
+			return false;
+		}
 	}
 	
 	public void setLocation(int screen, double x, double y) {
