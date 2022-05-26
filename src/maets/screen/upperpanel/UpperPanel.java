@@ -9,7 +9,7 @@ public class UpperPanel extends JPanel {
 
 	private static final long serialVersionUID = -2496740336679650741L;
 	
-	private JFrame parentFrame;
+	protected JFrame parentFrame;
 	
 	public UpperPanel(JFrame parentFrame) throws MegaException {
 		this.parentFrame = parentFrame;
