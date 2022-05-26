@@ -69,9 +69,6 @@ public class Main {
 		return FileSystemView.getFileSystemView().getHomeDirectory().getPath();
 	}
 	
-
-	
-	
 	public static void test() {
 		File[] paths;
 		FileSystemView fsv = FileSystemView.getFileSystemView();
