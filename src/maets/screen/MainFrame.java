@@ -43,8 +43,8 @@ public class MainFrame extends JFrame {
 		JPanel bottomPanel = new JPanel();
 		bottomPanel.setBounds(0, 591, 1920, 490);
 		bottomPanel.setOpaque(false);
-		getContentPane().add(bottomPanel);
 		bottomPanel.setLayout(null);
+		getContentPane().add(bottomPanel);
 	}
 	
 	public static BufferedImage resize(BufferedImage img, int newSize) { 
