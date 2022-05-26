@@ -11,12 +11,16 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
+import maets.screen.FrameManager;
+import maets.screen.FrameManager.TransitionSide;
+import maets.screen.settingsframe.SettingsPanel;
+
 public class TaskBarPanel extends JPanel {
  
 	private static final long serialVersionUID = -4051125285167482804L;
 
-	private JFrame parentFrame;
-	
+	protected JFrame parentFrame;
+
 	public TaskBarPanel(JFrame parentFrame) {
 		this.parentFrame = parentFrame;
 		setBounds(1220, 0, 407, 200);
@@ -38,7 +42,10 @@ public class TaskBarPanel extends JPanel {
 		JLabel configsLabel = new JLabel(gearIcon);
 		configsLabel.setBounds(240, 65, 70, 70);
 		configsLabel.addMouseListener(new ButtonsResponsivityMouseAdapter(configsLabel) {
-
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				FrameManager.contentPaneTransition(parentFrame, new SettingsPanel(parentFrame), TransitionSide.RIGHT, 64);
+			}
 		});
 		add(configsLabel);
 		
