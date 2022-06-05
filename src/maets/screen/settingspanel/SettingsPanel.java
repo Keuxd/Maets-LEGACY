@@ -1,4 +1,4 @@
-package maets.screen.settingsframe;
+package maets.screen.settingspanel;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,10 +9,9 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
-import maets.mega.exceptions.MegaException;
 import maets.screen.FrameManager;
 import maets.screen.FrameManager.TransitionSide;
-import maets.screen.upperpanel.UpperPanel;
+import maets.screen.mainpanel.MainPanel;
 
 public class SettingsPanel extends JPanel {
 
@@ -29,14 +28,7 @@ public class SettingsPanel extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				UpperPanel up;
-				try {
-					up = new UpperPanel(parentFrame);
-					FrameManager.contentPaneTransition(parentFrame, up, TransitionSide.UP, 54);
-				} catch (MegaException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}				
+				FrameManager.contentPaneTransition(parentFrame, new MainPanel(parentFrame), TransitionSide.UP, 54);				
 			}
 		});
 		btnNewButton.setBounds(10, 11, 313, 123);

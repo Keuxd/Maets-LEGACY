@@ -1,4 +1,4 @@
-package maets.screen.upperpanel;
+package maets.screen.mainpanel.upperpanel;
 
 import java.awt.Color;
 import java.awt.Cursor;
@@ -15,6 +15,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingWorker;
 
+import maets.core.Cache;
+import maets.core.Cache.CacheType;
 import maets.core.Main;
 import maets.mega.Mega;
 import maets.mega.exceptions.MegaException;
@@ -90,6 +92,13 @@ public class UserPanel extends JPanel {
 	}
 	
 	private String getConcatedUserNames() throws MegaException {
-		return Mega.getUserName("firstname").concat(Mega.getUserName("lastname"));
+		String concatedUserNames = Cache.get(CacheType.USER_NAME);
+		
+		if(concatedUserNames == null) {
+			concatedUserNames = Mega.getUserName("firstname").concat(Mega.getUserName("lastname"));
+			Cache.set(CacheType.USER_NAME, concatedUserNames);
+		}
+		
+		return concatedUserNames;
 	}
 }

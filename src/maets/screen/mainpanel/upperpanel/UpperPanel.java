@@ -1,4 +1,4 @@
-package maets.screen.upperpanel;
+package maets.screen.mainpanel.upperpanel;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;

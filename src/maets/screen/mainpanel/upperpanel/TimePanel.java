@@ -1,4 +1,4 @@
-package maets.screen.upperpanel;
+package maets.screen.mainpanel.upperpanel;
 
 import java.awt.Color;
 import java.awt.Font;
