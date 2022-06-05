@@ -11,11 +11,8 @@ import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
-import maets.core.Main;
-import maets.mega.exceptions.MegaException;
-import maets.screen.upperpanel.UpperPanel;
+import maets.screen.mainpanel.MainPanel;
 
 @SuppressWarnings("serial")
 public class MainFrame extends JFrame {
@@ -26,25 +23,10 @@ public class MainFrame extends JFrame {
 //		setExtendedState(JFrame.MAXIMIZED_BOTH);
 		setSize(1920, 1080);
 		addWindowListener(new CloseApplicationWindowAdapter(this));
-		getContentPane().setLayout(null);
-
-		JPanel upperPanel = null;
-		try {
-			upperPanel = new UpperPanel(this);
-		} catch(MegaException e1) {
-			Main.unexpectedError(e1.getMessage(), this);
-		}		
-		getContentPane().add(upperPanel);
+		setLayout(null);
 		
-		JPanel midPannel = new JPanel();
-		midPannel.setBounds(0, 201, 1920, 390);
-		getContentPane().add(midPannel);
-		
-		JPanel bottomPanel = new JPanel();
-		bottomPanel.setBounds(0, 591, 1920, 490);
-		bottomPanel.setOpaque(false);
-		bottomPanel.setLayout(null);
-		getContentPane().add(bottomPanel);
+		MainPanel mp = new MainPanel(this);
+		setContentPane(mp);
 	}
 	
 	public static BufferedImage resize(BufferedImage img, int newSize) { 
