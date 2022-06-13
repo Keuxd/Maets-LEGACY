@@ -19,12 +19,12 @@ public class MidPanel extends JPanel {
 	private static final long serialVersionUID = 3896718565332803227L;
 
 	public MidPanel() {
-		setBounds(0, 201, 1920, 390);
+		setBounds(0, 200, 1920, 400);
 		setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton();
 		btnNewButton_1.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_SMOOTH));
-		btnNewButton_1.setBounds(280, 93, 433, 203);
+		btnNewButton_1.setBounds(255, 95, 450, 210);
 		btnNewButton_1.setFocusable(false);
 		btnNewButton_1.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_1) {
 			@Override
@@ -57,7 +57,7 @@ public class MidPanel extends JPanel {
 
 		JButton btnNewButton_2 = new JButton();
 		btnNewButton_2.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_DEFAULT));
-		btnNewButton_2.setBounds(743, 93, 433, 203);
+		btnNewButton_2.setBounds(735, 95, 450, 210);
 		btnNewButton_2.setFocusable(false);
 		btnNewButton_2.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_2) {
 			@Override
@@ -69,7 +69,7 @@ public class MidPanel extends JPanel {
 		
 		JButton btnNewButton_3 = new JButton();
 		btnNewButton_3.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_SMOOTH));
-		btnNewButton_3.setBounds(1206, 93, 433, 203);
+		btnNewButton_3.setBounds(1215, 95, 450, 210);
 		btnNewButton_3.setFocusable(false);
 		btnNewButton_3.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_3) {
 			@Override

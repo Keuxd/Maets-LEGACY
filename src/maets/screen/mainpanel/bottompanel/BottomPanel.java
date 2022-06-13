@@ -11,7 +11,7 @@ public class BottomPanel extends JPanel {
 	private JTextField textField;
 
 	public BottomPanel() {
-		setBounds(0, 591, 1920, 490);
+		setBounds(0, 600, 1920, 480);
 		setLayout(null);
 		
 		textField = new JTextField();
