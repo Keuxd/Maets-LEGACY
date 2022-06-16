@@ -33,7 +33,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 		button.setBorder(this.defaultButtonBorder);
 	}
 	
-	// Should be implemented by it's parent class
+	// Should be implemented by it's child class
 	public void fixedMouseClicked(MouseEvent e) {}
 	
 	@Override
