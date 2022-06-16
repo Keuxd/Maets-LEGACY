@@ -31,27 +31,6 @@ public class MidPanel extends JPanel {
 			public void fixedMouseClicked(MouseEvent e) {
 				System.out.println("Warning 1");
 			}
-			
-//			private Dimension originalSize;
-//			
-//			@Override
-//			public void mouseEntered(MouseEvent e) {
-//				super.mouseEntered(e);
-//				
-//				originalSize = btnNewButton_1.getSize();
-//				
-//				int h = originalSize.height + (originalSize.height * 5/100);
-//				int w = originalSize.width + (originalSize.width * 5/100);
-//				
-//				btnNewButton_1.setSize(w, h);
-//			}
-//
-//			@Override
-//			public void mouseExited(MouseEvent e) {
-//				super.mouseExited(e);
-//				
-//				btnNewButton_1.setSize(originalSize);
-//			}
 		});
 		add(btnNewButton_1);
 
