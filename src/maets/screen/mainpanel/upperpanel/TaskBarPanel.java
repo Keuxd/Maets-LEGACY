@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 import maets.core.Main;
 import maets.screen.FrameManager;
 import maets.screen.FrameManager.TransitionSide;
-import maets.screen.mainpanel.ButtonsResponsivityMouseAdapter;
+import maets.screen.mainpanel.ResizableButtonsResponsivity;
 import maets.screen.settingspanel.SettingsPanel;
 
 public class TaskBarPanel extends JPanel {
@@ -39,9 +39,9 @@ public class TaskBarPanel extends JPanel {
 		lblNewLabel_1_1.setBounds(160, 65, 70, 70);
 		add(lblNewLabel_1_1);
 		
-		JLabel configsLabel = new JLabel(Main.getImageIconInResources("gear-settings.png", 66, Image.SCALE_SMOOTH));
+		JLabel configsLabel = new JLabel(Main.getImageIconInResources("gear-settings.png", 60, Image.SCALE_SMOOTH));
 		configsLabel.setBounds(240, 65, 70, 70);
-		configsLabel.addMouseListener(new ButtonsResponsivityMouseAdapter(configsLabel) {
+		configsLabel.addMouseListener(new ResizableButtonsResponsivity(configsLabel) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
 				FrameManager.contentPaneTransition(parentFrame, new SettingsPanel(parentFrame), TransitionSide.LEFT, 60);				
@@ -51,7 +51,7 @@ public class TaskBarPanel extends JPanel {
 		
 		JLabel closeLabel = new JLabel(Main.getImageIconInResources("close.png", 66, Image.SCALE_SMOOTH));
 		closeLabel.setBounds(320, 65, 70, 70);
-		closeLabel.addMouseListener(new ButtonsResponsivityMouseAdapter(closeLabel) {
+		closeLabel.addMouseListener(new ResizableButtonsResponsivity(closeLabel) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
 				JLabel confirmLabel = new JLabel("Are you sure you want to close Maets ?");
