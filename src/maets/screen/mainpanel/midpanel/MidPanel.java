@@ -1,6 +1,7 @@
 package maets.screen.mainpanel.midpanel;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.GradientPaint;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -12,7 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 import maets.core.Main;
-import maets.screen.mainpanel.ButtonsResponsivityMouseAdapter;
+import maets.screen.mainpanel.ResizableButtonsResponsivity;
 
 public class MidPanel extends JPanel {
 
@@ -21,42 +22,51 @@ public class MidPanel extends JPanel {
 	public MidPanel() {
 		setBounds(0, 200, 1920, 400);
 		setLayout(null);
-		
-		JButton btnNewButton_1 = new JButton();
-		btnNewButton_1.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_SMOOTH));
-		btnNewButton_1.setBounds(255, 95, 450, 210);
-		btnNewButton_1.setFocusable(false);
-		btnNewButton_1.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_1) {
+
+		JButton storeButton = new JButton("STORE");
+		storeButton.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
+		storeButton.setIcon(Main.getImageIconInResources("store.png", 130, Image.SCALE_SMOOTH));
+		storeButton.setBounds(255, 95, 450, 210);
+		storeButton.setHorizontalTextPosition(JButton.CENTER);
+		storeButton.setVerticalTextPosition(JButton.BOTTOM);
+		storeButton.setFocusable(false);
+		storeButton.addMouseListener(new ResizableButtonsResponsivity(storeButton) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
 				System.out.println("Warning 1");
 			}
 		});
-		add(btnNewButton_1);
+		add(storeButton);
 
-		JButton btnNewButton_2 = new JButton();
-		btnNewButton_2.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_DEFAULT));
-		btnNewButton_2.setBounds(735, 95, 450, 210);
-		btnNewButton_2.setFocusable(false);
-		btnNewButton_2.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_2) {
+		JButton libraryButton = new JButton("LIBRARY");
+		libraryButton.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
+		libraryButton.setIcon(Main.getImageIconInResources("library.png", 130, Image.SCALE_SMOOTH));
+		libraryButton.setBounds(735, 95, 450, 210);
+		libraryButton.setHorizontalTextPosition(JButton.CENTER);
+		libraryButton.setVerticalTextPosition(JButton.BOTTOM);
+		libraryButton.setFocusable(false);
+		libraryButton.addMouseListener(new ResizableButtonsResponsivity(libraryButton) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
 				System.out.println("Warning 2");
 			}
 		});
-		add(btnNewButton_2);
+		add(libraryButton);
 		
-		JButton btnNewButton_3 = new JButton();
-		btnNewButton_3.setIcon(Main.getImageIconInResources("warning.png", 175, Image.SCALE_SMOOTH));
-		btnNewButton_3.setBounds(1215, 95, 450, 210);
-		btnNewButton_3.setFocusable(false);
-		btnNewButton_3.addMouseListener(new ButtonsResponsivityMouseAdapter(btnNewButton_3) {
+		JButton button3 = new JButton("???");
+		button3.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
+		button3.setIcon(Main.getImageIconInResources("warning.png", 145, Image.SCALE_SMOOTH));
+		button3.setBounds(1215, 95, 450, 210);
+		button3.setHorizontalTextPosition(JButton.CENTER);
+		button3.setVerticalTextPosition(JButton.BOTTOM);
+		button3.setFocusable(false);
+		button3.addMouseListener(new ResizableButtonsResponsivity(button3) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
 				System.out.println("Warning 3");
 			}
 		});
-		add(btnNewButton_3);
+		add(button3);
 	}
 	
 	@Override
