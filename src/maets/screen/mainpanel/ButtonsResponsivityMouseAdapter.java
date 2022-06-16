@@ -49,6 +49,8 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		setIconInComponent(originalImageIcon);
+		button.setFont(button.getFont().deriveFont((float)button.getFont().getSize() * 2));
+
 		if(isClickValid()) {
 			fixedMouseClicked(e);
 		}
@@ -58,6 +60,8 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	public void mousePressed(MouseEvent e) {
 		Image scaledImage = this.originalImageIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
 		setIconInComponent(new ImageIcon(scaledImage));
+
+		button.setFont(button.getFont().deriveFont((float) button.getFont().getSize() / 2));
 	}
 
 	private boolean isClickValid() {
