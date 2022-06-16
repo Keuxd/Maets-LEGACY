@@ -23,8 +23,10 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		
-		FlatLightLaf.setup(new FlatDarculaLaf());
 		System.setProperty("sun.java2d.uiScale", "1.0");
+		System.setProperty("sun.java2d.uiScale.enabled", "false");
+		
+		FlatLightLaf.setup(new FlatDarculaLaf());
 		UIManager.put("ToolTip.font", new Font("Nirmala UI", Font.PLAIN, 20));
 		ToolTipManager.sharedInstance().setInitialDelay(0);
 		ToolTipManager.sharedInstance().setLightWeightPopupEnabled(true);
