@@ -48,8 +48,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		setIconInComponent(this.originalImageIcon);
-		
+		setIconInComponent(originalImageIcon);
 		if(isClickValid()) {
 			fixedMouseClicked(e);
 		}
