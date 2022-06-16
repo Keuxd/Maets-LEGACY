@@ -21,10 +21,10 @@ import javax.swing.border.Border;
 
 public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 
-	private JComponent button;
-	private ImageIcon originalImageIcon;
-
+	protected JComponent button;
+	protected ImageIcon originalImageIcon;
 	private Border defaultButtonBorder;
+	
 	public ButtonsResponsivityMouseAdapter(JComponent button) {
 		this.button = button;
 		this.originalImageIcon = convertIconToImageIcon(getIconInComponent());
@@ -72,7 +72,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 		}
 	}
 	
-	private void setIconInComponent(ImageIcon ic) {
+	protected void setIconInComponent(ImageIcon ic) {
 		if(button instanceof JButton) {
 			((JButton) button).setIcon(ic);
 		} else {
@@ -80,7 +80,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 		}
 	}
 	
-	private Icon getIconInComponent() {
+	protected Icon getIconInComponent() {
 		Icon componentIcon;
 		
 		if(button instanceof JButton) {
@@ -92,7 +92,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 		return componentIcon;
 	}
 	
-	private ImageIcon convertIconToImageIcon(Icon icon) {
+	protected ImageIcon convertIconToImageIcon(Icon icon) {
 		BufferedImage bi = new BufferedImage(icon.getIconWidth(), icon.getIconHeight(), BufferedImage.TYPE_INT_ARGB);
 		icon.paintIcon(new JCheckBox(), bi.getGraphics(), 0, 0);
 		return new ImageIcon(bi);
