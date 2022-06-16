@@ -38,7 +38,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 4));
+		button.setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY, 3));
 	}
 
 	@Override
