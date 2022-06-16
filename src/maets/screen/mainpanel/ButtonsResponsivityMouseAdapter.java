@@ -58,7 +58,8 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		Image scaledImage = this.originalImageIcon.getImage().getScaledInstance(50, 50, Image.SCALE_SMOOTH);
+		int imageSize = originalImageIcon.getIconHeight() / 2;
+		Image scaledImage = originalImageIcon.getImage().getScaledInstance(imageSize, imageSize, Image.SCALE_SMOOTH);
 		setIconInComponent(new ImageIcon(scaledImage));
 
 		button.setFont(button.getFont().deriveFont((float) button.getFont().getSize() / 2));
