@@ -16,15 +16,21 @@ import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
+import javax.swing.UIManager;
+import javax.swing.border.Border;
 
 public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 
 	private JComponent button;
 	private ImageIcon originalImageIcon;
 
+	private Border defaultButtonBorder;
 	public ButtonsResponsivityMouseAdapter(JComponent button) {
 		this.button = button;
 		this.originalImageIcon = convertIconToImageIcon(getIconInComponent());
+		
+		this.defaultButtonBorder = UIManager.getBorder("Button.border");
+		button.setBorder(this.defaultButtonBorder);
 	}
 	
 	// Should be implemented by it's parent class
@@ -37,7 +43,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		button.setBorder(null);
+		button.setBorder(defaultButtonBorder);
 	}
 	
 	@Override
