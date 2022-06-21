@@ -14,7 +14,10 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import maets.core.Main;
+import maets.screen.FrameManager;
+import maets.screen.FrameManager.TransitionSide;
 import maets.screen.mainpanel.ResizableButtonsResponsivity;
+import maets.screen.secondarypanels.storepanel.StorePanel;
 
 public class MidPanel extends JPanel {
 
@@ -34,7 +37,7 @@ public class MidPanel extends JPanel {
 		storeButton.addMouseListener(new ResizableButtonsResponsivity(storeButton) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
-				System.out.println("Warning 1");
+				FrameManager.contentPaneTransition(parentFrame, new StorePanel(parentFrame), TransitionSide.UP, 60);
 			}
 		});
 		add(storeButton);
