@@ -18,8 +18,4 @@ public class Cache {
 	public static String get(CacheType key) {
 		return cacheMap.get(key);
 	}
-	
-//	public static <T> T get(CacheType key, Class<T> type) {
-//		return type.cast(cacheMap.get(key));
-//	}
 }
