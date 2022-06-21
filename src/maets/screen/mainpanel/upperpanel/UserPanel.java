@@ -8,7 +8,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -18,6 +17,8 @@ import javax.swing.SwingWorker;
 import maets.core.Cache;
 import maets.core.Cache.CacheType;
 import maets.core.Main;
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.mega.Mega;
 import maets.mega.exceptions.MegaException;
 import maets.screen.login.LoginFrame;
@@ -34,8 +35,7 @@ public class UserPanel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1220, 200);
 		
-		ImageIcon userImage = new ImageIcon(new ImageIcon(UserPanel.class.getResource("/resources/person-512.png")).getImage().getScaledInstance(175, 175, Image.SCALE_DEFAULT));
-		JLabel userImageLabel = new JLabel(userImage);
+		JLabel userImageLabel = new JLabel(Resources.getImageIconResized("person-512.png", ResourceType.UI, 175, Image.SCALE_DEFAULT));
 		userImageLabel.setBounds(295, 45, 128, 128);
 		userImageLabel.setBorder(BorderFactory.createLineBorder(new Color(227, 229, 232), 4, true));
 		add(userImageLabel);

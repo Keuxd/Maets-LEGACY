@@ -10,11 +10,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-import maets.core.Main;
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.screen.FrameManager;
 import maets.screen.FrameManager.TransitionSide;
 import maets.screen.mainpanel.ResizableButtonsResponsivity;
-import maets.screen.settingspanel.SettingsPanel;
+import maets.screen.secondarypanels.settingspanel.SettingsPanel;
 
 public class TaskBarPanel extends JPanel {
  
@@ -39,17 +40,17 @@ public class TaskBarPanel extends JPanel {
 		lblNewLabel_1_1.setBounds(160, 65, 70, 70);
 		add(lblNewLabel_1_1);
 		
-		JLabel configsLabel = new JLabel(Main.getImageIconInResources("gear-settings.png", 60, Image.SCALE_SMOOTH));
+		JLabel configsLabel = new JLabel(Resources.getImageIconResized("gear-settings.png", ResourceType.UI, 60, Image.SCALE_SMOOTH));
 		configsLabel.setBounds(240, 65, 70, 70);
 		configsLabel.addMouseListener(new ResizableButtonsResponsivity(configsLabel) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
-				FrameManager.contentPaneTransition(parentFrame, new SettingsPanel(parentFrame), TransitionSide.LEFT, 60);				
+				FrameManager.contentPaneTransition(parentFrame, new SettingsPanel(parentFrame), TransitionSide.UP, 60);				
 			}
 		});
 		add(configsLabel);
 		
-		JLabel closeLabel = new JLabel(Main.getImageIconInResources("close.png", 66, Image.SCALE_SMOOTH));
+		JLabel closeLabel = new JLabel(Resources.getImageIconResized("close.png", ResourceType.UI, 66, Image.SCALE_SMOOTH));
 		closeLabel.setBounds(320, 65, 70, 70);
 		closeLabel.addMouseListener(new ResizableButtonsResponsivity(closeLabel) {
 			@Override

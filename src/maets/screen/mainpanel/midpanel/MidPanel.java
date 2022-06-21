@@ -13,7 +13,8 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import maets.core.Main;
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.screen.FrameManager;
 import maets.screen.FrameManager.TransitionSide;
 import maets.screen.mainpanel.ResizableButtonsResponsivity;
@@ -29,7 +30,7 @@ public class MidPanel extends JPanel {
 
 		JButton storeButton = new JButton("STORE");
 		storeButton.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
-		storeButton.setIcon(Main.getImageIconInResources("store.png", 130, Image.SCALE_SMOOTH));
+		storeButton.setIcon(Resources.getImageIconResized("store.png", ResourceType.UI, 130, Image.SCALE_SMOOTH));
 		storeButton.setBounds(255, 95, 450, 210);
 		storeButton.setHorizontalTextPosition(JButton.CENTER);
 		storeButton.setVerticalTextPosition(JButton.BOTTOM);
@@ -44,7 +45,7 @@ public class MidPanel extends JPanel {
 
 		JButton libraryButton = new JButton("LIBRARY");
 		libraryButton.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
-		libraryButton.setIcon(Main.getImageIconInResources("library.png", 130, Image.SCALE_SMOOTH));
+		libraryButton.setIcon(Resources.getImageIconResized("library.png", ResourceType.UI, 130, Image.SCALE_SMOOTH));
 		libraryButton.setBounds(735, 95, 450, 210);
 		libraryButton.setHorizontalTextPosition(JButton.CENTER);
 		libraryButton.setVerticalTextPosition(JButton.BOTTOM);
@@ -59,7 +60,7 @@ public class MidPanel extends JPanel {
 		
 		JButton button3 = new JButton("???");
 		button3.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
-		button3.setIcon(Main.getImageIconInResources("warning.png", 145, Image.SCALE_SMOOTH));
+		button3.setIcon(Resources.getImageIconResized("warning.png", ResourceType.UI, 145, Image.SCALE_SMOOTH));
 		button3.setBounds(1215, 95, 450, 210);
 		button3.setHorizontalTextPosition(JButton.CENTER);
 		button3.setVerticalTextPosition(JButton.BOTTOM);
