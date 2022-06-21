@@ -23,8 +23,8 @@ public class ResizableButtonsResponsivity extends ButtonsResponsivityMouseAdapte
 	}
 	
 	private void initResizeTimer() {
-		size = -4;//-6
-		location = 2;//3
+		size = -4; //-6
+		location = 2; //3
 		
 		this.resizeTimer = new Timer(10, new ActionListener() {
 			@Override
