@@ -4,7 +4,6 @@ import java.awt.Font;
 import java.io.File;
 import java.io.IOException;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -66,16 +65,6 @@ public class Main {
 			e.printStackTrace();
 		}
 		System.exit(1);
-	}
-	
-	public static ImageIcon getImageIconInResources(String imageNameWithExtension, Integer size, Integer imageFlag) {
-		ImageIcon ic = new ImageIcon(Main.class.getResource("/resources/" + imageNameWithExtension));
-		
-		if(size != null && imageFlag != null) {
-			ic = new ImageIcon(ic.getImage().getScaledInstance(size, size, imageFlag));
-		}
-		
-		return ic;
 	}
 	
 	public static String getDesktopPath() {
