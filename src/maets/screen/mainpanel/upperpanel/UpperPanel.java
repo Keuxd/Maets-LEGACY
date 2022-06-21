@@ -22,7 +22,7 @@ public class UpperPanel extends JPanel {
 		JPanel taskBarPanel = new TaskBarPanel(parentFrame);
 		add(taskBarPanel);
 		
-		JPanel timePanel = new TimePanel();
+		JPanel timePanel = new TimerPanel();
 		add(timePanel);
 	}
 }

@@ -11,13 +11,13 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class TimePanel extends JPanel {
+public class TimerPanel extends JPanel {
 
 	private static final long serialVersionUID = 6045759015224652453L;
 
 	private DateTimeFormatter dtf;
 	
-	public TimePanel() {
+	public TimerPanel() {
 		setLayout(null);
 		setBounds(1627, 0, 293, 200);
 
