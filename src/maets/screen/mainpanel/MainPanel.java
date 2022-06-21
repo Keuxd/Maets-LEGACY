@@ -20,15 +20,15 @@ public class MainPanel extends JPanel {
 		setLayout(null);
 		
 		JPanel upperPanel = null;
+		JPanel midPanel = null;
 		try {
 			upperPanel = new UpperPanel(parentFrame);
+			midPanel = new MidPanel(parentFrame);
 		} catch(MegaException e1) {
 			Main.unexpectedError(e1.getMessage(), parentFrame);
 		}
 		add(upperPanel);
-		
-		MidPanel mp = new MidPanel();
-		add(mp);
+		add(midPanel);
 		
 		BottomPanel bp = new BottomPanel();
 		add(bp);
