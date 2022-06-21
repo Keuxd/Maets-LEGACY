@@ -6,7 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 public class Cache {
 	
 	public enum CacheType {
-		USER_NAME;
+		USER_NAME, // String.class
+		GAMES_TABLE; // GamesTable.class
 	}
 
 	private static Map<CacheType, Object> cacheMap = new ConcurrentHashMap<>(CacheType.values().length);
