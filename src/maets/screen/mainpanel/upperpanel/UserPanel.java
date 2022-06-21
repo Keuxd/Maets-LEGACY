@@ -91,7 +91,7 @@ public class UserPanel extends JPanel {
 	}
 	
 	private String getConcatedUserNames() throws MegaException {
-		String concatedUserNames = Cache.get(CacheType.USER_NAME);
+		String concatedUserNames = (String) Cache.get(CacheType.USER_NAME);
 		
 		if(concatedUserNames == null) {
 			concatedUserNames = Mega.getUserName("firstname").concat(Mega.getUserName("lastname"));
