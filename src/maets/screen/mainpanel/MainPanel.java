@@ -13,7 +13,7 @@ public class MainPanel extends JPanel {
 
 	private static final long serialVersionUID = 3696506270919324384L;
 	
-	private JFrame parentFrame;
+	protected JFrame parentFrame;
 	
 	public MainPanel(JFrame parentFrame) {
 		setBounds(0, 0, parentFrame.getWidth(), parentFrame.getHeight());

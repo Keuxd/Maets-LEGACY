@@ -27,8 +27,7 @@ public class UserPanel extends JPanel {
 	
 	private static final long serialVersionUID = -8359478721677085694L;
 	
-	@SuppressWarnings("unused")
-	private JFrame parentFrame;
+	protected JFrame parentFrame;
 
 	public UserPanel(JFrame parentFrame) throws MegaException {
 		this.parentFrame = parentFrame;
