@@ -85,7 +85,7 @@ public class FrameManager {
 	}
 	
 	private static void moveComponents(Component[] previousComponents, JPanel newPanel, int[] velocity, Container contentPane) {
-		final Timer timer = new Timer(15, null);
+		final Timer timer = new Timer(16, null);
 		timer.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
