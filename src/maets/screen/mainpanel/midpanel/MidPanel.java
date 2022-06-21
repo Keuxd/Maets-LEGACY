@@ -10,6 +10,7 @@ import java.awt.event.MouseEvent;
 import java.awt.geom.Rectangle2D;
 
 import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import maets.core.Main;
@@ -19,7 +20,7 @@ public class MidPanel extends JPanel {
 
 	private static final long serialVersionUID = 3896718565332803227L;
 
-	public MidPanel() {
+	public MidPanel(JFrame parentFrame) {
 		setBounds(0, 200, 1920, 400);
 		setLayout(null);
 
