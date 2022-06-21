@@ -14,6 +14,8 @@ import javax.swing.filechooser.FileSystemView;
 import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
+import maets.core.Cache.CacheType;
+import maets.games.GamesTable;
 import maets.mega.Mega;
 import maets.screen.MainFrame;
 import maets.screen.login.LoginFrame;
@@ -33,6 +35,7 @@ public class Main {
 		
 		try {
 			Mega.init();
+			Cache.set(CacheType.GAMES_TABLE, new GamesTable(60));
 			
 			if(!Mega.isLoggedIn()) {
 				new LoginFrame().setVisible(true);
