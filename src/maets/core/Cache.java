@@ -9,13 +9,13 @@ public class Cache {
 		USER_NAME;
 	}
 
-	private static Map<CacheType, String> cacheMap = new ConcurrentHashMap<>(CacheType.values().length);
+	private static Map<CacheType, Object> cacheMap = new ConcurrentHashMap<>(CacheType.values().length);
 	
-	public static void set(CacheType key, String value) {
+	public static void set(CacheType key, Object value) {
 		cacheMap.put(key, value);
 	}
 
-	public static String get(CacheType key) {
+	public static Object get(CacheType key) {
 		return cacheMap.get(key);
 	}
 }
