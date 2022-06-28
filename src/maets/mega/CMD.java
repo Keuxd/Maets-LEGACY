@@ -13,6 +13,7 @@ public class CMD {
 	        log("\nRunning -> " + command);
 	        
 	        ProcessBuilder pb = new ProcessBuilder("cmd.exe", "/c", command);
+	        pb.redirectErrorStream(true);
 	        Process process = pb.start();
 	        
 	        logOutput(process.getErrorStream());
