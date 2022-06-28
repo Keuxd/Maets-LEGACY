@@ -31,6 +31,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingWorker;
 
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.mega.exceptions.MegaException;
 import maets.mega.exceptions.MegaLoginFailedException;
 import maets.mega.exceptions.MegaUnconfirmedAccountException;
@@ -82,7 +84,7 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(pwdLabel);
 		
 		
-		ImageIcon warningIcon = new ImageIcon(new ImageIcon(LoginFrame.class.getResource("/resources/warning.png")).getImage().getScaledInstance(40, 40, Image.SCALE_SMOOTH));
+		ImageIcon warningIcon = Resources.getImageIconResized("warning.png", ResourceType.UI, 40, Image.SCALE_SMOOTH);
 		JLabel warningEmail = new JLabel(warningIcon);
 		warningEmail.setBounds(45, 199, 40, 40);
 		warningEmail.setVisible(false);
@@ -240,7 +242,7 @@ public class LoginFrame extends JFrame {
 		int gifSize = 100;
 		int centerPosition = (loadingPanel.getWidth() / 2) - (gifSize / 2);
 		
-		ImageIcon loadingGif = new ImageIcon(LoginFrame.class.getResource("/resources/loading.gif"));
+		ImageIcon loadingGif = Resources.getImageIcon("loading.gif", ResourceType.UI);
 		ImageIcon loadingGif1 = new ImageIcon(loadingGif.getImage().getScaledInstance(gifSize, gifSize, Image.SCALE_DEFAULT));
 		
 		JLabel gifLabel = new JLabel(loadingGif1);
