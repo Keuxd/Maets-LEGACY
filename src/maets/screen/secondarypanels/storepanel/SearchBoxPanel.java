@@ -5,10 +5,14 @@ import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.AdjustmentEvent;
 import java.awt.event.AdjustmentListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.util.Set;
 
 import javax.swing.DefaultListCellRenderer;
+import javax.swing.DefaultListModel;
 import javax.swing.Icon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -51,23 +55,20 @@ public class SearchBoxPanel extends JPanel {
 		add(scrollBar);
 		
 		GamesTable gt = (GamesTable) Cache.get(CacheType.GAMES_TABLE);
-		JList<String> list = new JList(gt.getNames());
+		JList<String> list = new JList<>();
 		list.setBounds(10, 128, 348, 445);
 		list.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
 		list.setForeground(Color.WHITE);
+		updateGamesList("", list, gt.getNames());
 		list.setCellRenderer(new DefaultListCellRenderer() {
 			private static final long serialVersionUID = -3339892752454882521L;
 
 			@Override
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
 		    	JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
-		        Icon icon = getIcon(list, value, index, isSelected, cellHasFocus);
+		        Icon icon = gt.getIcon((String) value);
 		        label.setIcon(icon);
 		        return label;
-		    }
-			
-		    protected Icon getIcon(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-		    	return gt.getIcon(index);
 		    }
 		});
 		add(list);
@@ -79,11 +80,6 @@ public class SearchBoxPanel extends JPanel {
 		textField.setFocusable(false);
 		textField.setEnabled(false);
 		textField.addMouseListener(new MouseAdapter() {
-			@Override
-			public void mousePressed(MouseEvent e) {
-				
-			}
-
 			@Override
 			public void mouseEntered(MouseEvent e) {
 				list.clearSelection();
@@ -97,6 +93,24 @@ public class SearchBoxPanel extends JPanel {
 				textField.setFocusable(false);
 			}
 		});
+		textField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent e) {
+				updateGamesList(textField.getText(), list, gt.getNames());
+			}
+		});
 		add(textField);
+	}
+	
+	private void updateGamesList(String searchString, JList<String> list, Set<String> gamesList) {
+		DefaultListModel<String> model = new DefaultListModel<>();
+
+		for(String game : gamesList) {
+			if(game.toLowerCase().matches(".*" + searchString.toLowerCase().trim() + ".*")) {
+				model.addElement(game);
+			}
+		}
+		
+		list.setModel(model);
 	}
 }
