@@ -57,6 +57,11 @@ public class SearchBoxPanel extends JPanel {
 		    	label.setText(null);
 
 		        label.setIcon(icon);
+		        
+		        Border border = label.getBorder();
+		        Border margin = new EmptyBorder(2, -6, 2, -6);
+		        label.setBorder(new CompoundBorder(border, margin));
+		        
 		        return label;
 		    }
 		});
