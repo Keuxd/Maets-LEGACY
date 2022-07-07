@@ -55,6 +55,24 @@ public class SearchBoxPanel extends JPanel {
 		});
 		add(list);
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 130, 480, 830);
+		scrollPane.setViewportView(list);
+		list.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseEntered(MouseEvent e) {
+				list.setEnabled(true);
+				list.setFocusable(true);
+			}
+			@Override
+			public void mouseExited(MouseEvent e) {
+				list.setEnabled(false);
+				list.setFocusable(false);
+			}
+		});
+		list.setLayoutOrientation(JList.VERTICAL);
+		add(scrollPane);
+
 		textField = new JTextField();
 		textField.setBounds(10, 71, 390, 46);
 		textField.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
