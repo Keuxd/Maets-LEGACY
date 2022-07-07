@@ -74,7 +74,7 @@ public class SearchBoxPanel extends JPanel {
 		add(scrollPane);
 
 		textField = new JTextField();
-		textField.setBounds(10, 71, 390, 46);
+		textField.setBounds(10, 70, 390, 50);
 		textField.setFont(new Font("Nirmala UI", Font.PLAIN, 25));
 		textField.setForeground(Color.WHITE);
 		textField.setFocusable(false);
