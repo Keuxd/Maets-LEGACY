@@ -41,8 +41,6 @@ public class SearchBoxPanel extends JPanel {
 		GamesTable gt = (GamesTable) Cache.get(CacheType.GAMES_TABLE);
 		JList<String> list = new JList<>();
 		list.setBounds(10, 128, 348, 445);
-		list.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
-		list.setForeground(Color.WHITE);
 		updateGamesList("", list, gt.getNames());
 		list.setCellRenderer(new DefaultListCellRenderer() {
 			private static final long serialVersionUID = -3339892752454882521L;
