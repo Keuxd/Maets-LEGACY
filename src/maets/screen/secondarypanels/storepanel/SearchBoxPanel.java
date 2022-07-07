@@ -52,8 +52,8 @@ public class SearchBoxPanel extends JPanel {
 
 			@Override
 			public Component getListCellRendererComponent(JList<?> list, Object value, int index, boolean isSelected, boolean cellHasFocus) {
-		    	JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, isSelected, cellHasFocus);
 		        Icon icon = gt.getIcon((String) value);
+		    	JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, false, cellHasFocus);
 		        label.setIcon(icon);
 		        return label;
 		    }
