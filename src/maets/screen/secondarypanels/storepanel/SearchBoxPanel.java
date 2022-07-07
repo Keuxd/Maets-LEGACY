@@ -32,8 +32,8 @@ public class SearchBoxPanel extends JPanel {
 	protected JFrame parentFrame;
 	private JTextField textField;
 	
-	public SearchBoxPanel(JFrame parentFrame) {
-		setBounds(0, 110, 410, 970);
+	public SearchBoxPanel(JFrame parentFrame, JPanel gamePanel) {
+		setBounds(0, 110, 490, 970);
 		setLayout(null);
 		
 		JLabel lblNewLabel = new JLabel("Games");
