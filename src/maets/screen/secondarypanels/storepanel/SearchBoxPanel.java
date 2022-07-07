@@ -3,8 +3,6 @@ package maets.screen.secondarypanels.storepanel;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Font;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -18,7 +16,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JTextField;
 
 import maets.core.Cache;
@@ -41,18 +38,6 @@ public class SearchBoxPanel extends JPanel {
 		lblNewLabel.setBounds(10, 11, 207, 49);
 		add(lblNewLabel);
 		
-		JScrollBar scrollBar = new JScrollBar();
-		scrollBar.setMaximum(11);
-		scrollBar.setBounds(368, 127, 32, 445);
-		scrollBar.addAdjustmentListener(new AdjustmentListener() {
-
-			@Override
-			public void adjustmentValueChanged(AdjustmentEvent e) {
-				System.out.println(e.getValue());
-			}
-			
-		});
-		add(scrollBar);
 		
 		GamesTable gt = (GamesTable) Cache.get(CacheType.GAMES_TABLE);
 		JList<String> list = new JList<>();
