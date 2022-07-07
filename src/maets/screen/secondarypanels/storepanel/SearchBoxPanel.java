@@ -33,11 +33,10 @@ public class SearchBoxPanel extends JPanel {
 		setBounds(0, 110, 490, 970);
 		setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Games");
-		lblNewLabel.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 35));
-		lblNewLabel.setBounds(10, 11, 207, 49);
-		add(lblNewLabel);
-		
+		JLabel title = new JLabel("Games");
+		title.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 35));
+		title.setBounds(10, 10, 210, 50);
+		add(title);
 		
 		GamesTable gt = (GamesTable) Cache.get(CacheType.GAMES_TABLE);
 		JList<String> list = new JList<>();
