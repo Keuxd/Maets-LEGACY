@@ -1,6 +1,5 @@
 package maets.games;
 
-import java.awt.Image;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -17,8 +16,10 @@ public class GamesTable {
 	
 	public GamesTable(int iconsSize) {
 		games = new ConcurrentHashMap<>();
-		games.put("Vampire Survivors", Resources.getImageIconResized("vampire-survivors-icon.png", ResourceType.GAMES, iconsSize, Image.SCALE_DEFAULT));
-		games.put("Resident Evil 4 UHD", Resources.getImageIconResized("re4.png", ResourceType.GAMES, iconsSize, Image.SCALE_DEFAULT));
+		games.put("Vampire Survivors", Resources.getImageIcon("vampire-survivors-banner.jpg", ResourceType.GAMES));
+		games.put("Resident Evil 4 UHD", Resources.getImageIcon("resident-evil-4-uhd-banner.jpg", ResourceType.GAMES));
+		games.put("Digimon Story Cyber Sleuth: Complete Edition", Resources.getImageIcon("digimon-cyber-sleuth-banner.jpg", ResourceType.GAMES));
+		games.put("Ruined King: A League of Legends Story™", Resources.getImageIcon("ruined-king-banner.jpg", ResourceType.GAMES));
 	}
 	
 	public Set<String> getNames() {
