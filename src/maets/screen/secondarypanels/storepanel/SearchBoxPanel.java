@@ -64,7 +64,6 @@ public class SearchBoxPanel extends JPanel {
 		textField.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
-				list.clearSelection();
 				textField.setEnabled(true);
 				textField.setFocusable(true);
 			}
