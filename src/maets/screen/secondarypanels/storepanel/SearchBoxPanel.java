@@ -58,6 +58,12 @@ public class SearchBoxPanel extends JPanel {
 		        return label;
 		    }
 		});
+		list.addListSelectionListener(new ListSelectionListener() {
+			@Override
+			public void valueChanged(ListSelectionEvent e) {
+				String selectedGame = list.getSelectedValue();
+			}
+		});
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setBounds(10, 130, 480, 830);
