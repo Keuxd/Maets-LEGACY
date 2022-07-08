@@ -74,6 +74,9 @@ public class SearchBoxPanel extends JPanel {
 			@Override
 			public void valueChanged(ListSelectionEvent e) {
 				String selectedGame = list.getSelectedValue();
+				if(e.getValueIsAdjusting() || selectedGame == null || gamePanel.getGameName().equals(selectedGame)) return;
+				
+				gamePanel.repopulatePanel(selectedGame);
 			}
 		});
 		list.addMouseListener(new MouseAdapter() {
