@@ -1,5 +1,6 @@
 package maets.games;
 
+import java.awt.Image;
 import java.util.Collection;
 import java.util.Map;
 import java.util.Set;
@@ -14,12 +15,12 @@ public class GamesTable {
 	
 	private Map<String, ImageIcon> games;
 	
-	public GamesTable(int iconsSize) {
+	public GamesTable(int bannerWidth, int bannerHeight) {
 		games = new ConcurrentHashMap<>();
-		games.put("Vampire Survivors", Resources.getImageIcon("vampire-survivors-banner.jpg", ResourceType.GAMES));
-		games.put("Resident Evil 4 UHD", Resources.getImageIcon("resident-evil-4-uhd-banner.jpg", ResourceType.GAMES));
-		games.put("Digimon Story Cyber Sleuth: Complete Edition", Resources.getImageIcon("digimon-cyber-sleuth-banner.jpg", ResourceType.GAMES));
-		games.put("Ruined King: A League of Legends Story™", Resources.getImageIcon("ruined-king-banner.jpg", ResourceType.GAMES));
+		games.put("Vampire Survivors", Resources.getImageIconResized("vampire-survivors-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
+		games.put("Resident Evil 4 UHD", Resources.getImageIconResized("resident-evil-4-uhd-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
+		games.put("Digimon Story Cyber Sleuth: Complete Edition", Resources.getImageIconResized("digimon-cyber-sleuth-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
+		games.put("Ruined King: A League of Legends Story™", Resources.getImageIconResized("ruined-king-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
 	}
 	
 	public Set<String> getNames() {
