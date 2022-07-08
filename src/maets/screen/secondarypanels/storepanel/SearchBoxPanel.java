@@ -47,6 +47,8 @@ public class SearchBoxPanel extends JPanel {
 		GamesTable gt = (GamesTable) Cache.get(CacheType.GAMES_TABLE);
 		JList<String> list = new JList<>();
 		updateGamesList("", list, gt.getNames());
+		list.setEnabled(false);
+		list.setFocusable(false);
 		list.setCellRenderer(new DefaultListCellRenderer() {
 			private static final long serialVersionUID = -3339892752454882521L;
 
