@@ -242,10 +242,9 @@ public class LoginFrame extends JFrame {
 		int gifSize = 100;
 		int centerPosition = (loadingPanel.getWidth() / 2) - (gifSize / 2);
 		
-		ImageIcon loadingGif = Resources.getImageIcon("loading.gif", ResourceType.UI);
-		ImageIcon loadingGif1 = new ImageIcon(loadingGif.getImage().getScaledInstance(gifSize, gifSize, Image.SCALE_DEFAULT));
+		ImageIcon loadingGif = Resources.getImageIconEvenResized("loading.gif", ResourceType.UI, gifSize, Image.SCALE_DEFAULT);
 		
-		JLabel gifLabel = new JLabel(loadingGif1);
+		JLabel gifLabel = new JLabel(loadingGif);
 		gifLabel.setBounds(centerPosition, centerPosition, gifSize, gifSize);
 		
 		loadingPanel.add(gifLabel);
