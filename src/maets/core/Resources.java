@@ -8,7 +8,11 @@ public class Resources {
 		GAMES, UI
 	}
 	
-	public static ImageIcon getImageIconResized(String imageNameWithExtension, ResourceType type, int size, int imageFlag) {
+	public static ImageIcon getImageIconResized(String imageNameWithExtension, ResourceType type, int width, int height, int imageFlag) {
+		return new ImageIcon(getImageIcon(imageNameWithExtension, type).getImage().getScaledInstance(width, height, imageFlag));
+	}
+	
+	public static ImageIcon getImageIconEvenResized(String imageNameWithExtension, ResourceType type, int size, int imageFlag) {
 		return new ImageIcon(getImageIcon(imageNameWithExtension, type).getImage().getScaledInstance(size, size, imageFlag));
 	}
 	
