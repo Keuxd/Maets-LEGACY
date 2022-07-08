@@ -34,7 +34,7 @@ public class UserPanel extends JPanel {
 		setLayout(null);
 		setBounds(0, 0, 1220, 200);
 		
-		JLabel userImageLabel = new JLabel(Resources.getImageIconResized("person-512.png", ResourceType.UI, 175, Image.SCALE_DEFAULT));
+		JLabel userImageLabel = new JLabel(Resources.getImageIconEvenResized("person-512.png", ResourceType.UI, 175, Image.SCALE_AREA_AVERAGING));
 		userImageLabel.setBounds(295, 45, 128, 128);
 		userImageLabel.setBorder(BorderFactory.createLineBorder(new Color(227, 229, 232), 4, true));
 		add(userImageLabel);

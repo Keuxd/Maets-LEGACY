@@ -84,7 +84,7 @@ public class LoginFrame extends JFrame {
 		getContentPane().add(pwdLabel);
 		
 		
-		ImageIcon warningIcon = Resources.getImageIconResized("warning.png", ResourceType.UI, 40, Image.SCALE_SMOOTH);
+		ImageIcon warningIcon = Resources.getImageIconEvenResized("warning.png", ResourceType.UI, 40, Image.SCALE_AREA_AVERAGING);
 		JLabel warningEmail = new JLabel(warningIcon);
 		warningEmail.setBounds(45, 199, 40, 40);
 		warningEmail.setVisible(false);

@@ -40,7 +40,7 @@ public class TaskBarPanel extends JPanel {
 		lblNewLabel_1_1.setBounds(160, 65, 70, 70);
 		add(lblNewLabel_1_1);
 		
-		JLabel configsLabel = new JLabel(Resources.getImageIconResized("gear-settings.png", ResourceType.UI, 60, Image.SCALE_SMOOTH));
+		JLabel configsLabel = new JLabel(Resources.getImageIconEvenResized("gear-settings.png", ResourceType.UI, 60, Image.SCALE_AREA_AVERAGING));
 		configsLabel.setBounds(240, 65, 70, 70);
 		configsLabel.addMouseListener(new ResizableButtonsResponsivity(configsLabel) {
 			@Override
@@ -50,7 +50,7 @@ public class TaskBarPanel extends JPanel {
 		});
 		add(configsLabel);
 		
-		JLabel closeLabel = new JLabel(Resources.getImageIconResized("close.png", ResourceType.UI, 66, Image.SCALE_SMOOTH));
+		JLabel closeLabel = new JLabel(Resources.getImageIconEvenResized("close.png", ResourceType.UI, 66, Image.SCALE_AREA_AVERAGING));
 		closeLabel.setBounds(320, 65, 70, 70);
 		closeLabel.addMouseListener(new ResizableButtonsResponsivity(closeLabel) {
 			@Override

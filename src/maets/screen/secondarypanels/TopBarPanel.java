@@ -32,7 +32,7 @@ public class TopBarPanel extends JPanel {
 		setBounds(0, 0, 1920, 110);
 		setLayout(null);
 		
-		JLabel returnButton = new JLabel(Resources.getImageIconResized("return.png", ResourceType.UI, 75, Image.SCALE_SMOOTH));
+		JLabel returnButton = new JLabel(Resources.getImageIconEvenResized("return.png", ResourceType.UI, 75, Image.SCALE_AREA_AVERAGING));
 		returnButton.setBounds(23, 11, 85, 85);
 		returnButton.addMouseListener(new ResizableButtonsResponsivity(returnButton) { 
 			@Override
