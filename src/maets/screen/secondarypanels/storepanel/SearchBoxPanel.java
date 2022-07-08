@@ -18,6 +18,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.Border;
 import javax.swing.border.CompoundBorder;
 import javax.swing.border.EmptyBorder;
@@ -59,6 +60,8 @@ public class SearchBoxPanel extends JPanel {
 
 		    	Icon icon = gt.getIcon((String) value);
 		        label.setIcon(icon);
+		        
+		        label.setHorizontalAlignment(SwingConstants.CENTER);
 		        
 		        Border border = label.getBorder();
 		        Border margin = new EmptyBorder(2, -6, 2, -6);
