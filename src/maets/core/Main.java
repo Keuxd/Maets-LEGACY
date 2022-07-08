@@ -35,7 +35,7 @@ public class Main {
 		
 		try {
 			Mega.init();
-			Cache.set(CacheType.GAMES_TABLE, new GamesTable(60));
+			Cache.set(CacheType.GAMES_TABLE, new GamesTable(460, 215));
 			
 			if(!Mega.isLoggedIn()) {
 				new LoginFrame().setVisible(true);
