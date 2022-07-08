@@ -76,10 +76,6 @@ public class SearchBoxPanel extends JPanel {
 				String selectedGame = list.getSelectedValue();
 			}
 		});
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 130, 480, 830);
-		scrollPane.setViewportView(list);
 		list.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseEntered(MouseEvent e) {
@@ -92,6 +88,10 @@ public class SearchBoxPanel extends JPanel {
 				list.setFocusable(false);
 			}
 		});
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 130, 480, 830);
+		scrollPane.setViewportView(list);
 		list.setLayoutOrientation(JList.VERTICAL);
 		add(scrollPane);
 
