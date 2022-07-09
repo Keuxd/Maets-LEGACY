@@ -2,7 +2,15 @@ package maets.screen.mainpanel.bottompanel;
 
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
+
 import javax.swing.JLabel;
+
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.JButton;
 
 public class BottomPanel extends JPanel {

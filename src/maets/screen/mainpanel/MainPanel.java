@@ -1,9 +1,14 @@
 package maets.screen.mainpanel;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 import maets.core.Main;
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.mega.exceptions.MegaException;
 import maets.screen.mainpanel.bottompanel.BottomPanel;
 import maets.screen.mainpanel.midpanel.MidPanel;

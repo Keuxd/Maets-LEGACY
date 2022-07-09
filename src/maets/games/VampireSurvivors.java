@@ -7,7 +7,7 @@ import java.io.IOException;
 import com.github.junrar.exception.RarException;
 
 import maets.core.ExtractUtil;
-import maets.download.Drive;
+import maets.download.cloudservices.Drive;
 
 public class VampireSurvivors extends AbstractGame {
 	

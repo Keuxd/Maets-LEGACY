@@ -1,11 +1,16 @@
 package maets.screen.secondarypanels.settingspanel;
 
+import java.awt.Graphics;
+import java.awt.Image;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextPane;
 
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
 import maets.screen.mainpanel.MainPanel;
 import maets.screen.secondarypanels.TopBarPanel;
 
