@@ -20,7 +20,6 @@ public class GamesTable {
 		games.put("Vampire Survivors", Resources.getImageIconResized("vampire-survivors-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
 		games.put("Resident Evil 4 UHD", Resources.getImageIconResized("resident-evil-4-uhd-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
 		games.put("Digimon Story Cyber Sleuth: Complete Edition", Resources.getImageIconResized("digimon-cyber-sleuth-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
-		games.put("Ruined King: A League of Legends Story™", Resources.getImageIconResized("ruined-king-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING));
 	}
 	
 	public Set<String> getNames() {
