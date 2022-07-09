@@ -33,6 +33,9 @@ public class GamesTable {
 				Resources.getImageIconResized("digimon-cyber-sleuth-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING),
 				Resources.getImageIconResized("digimon-cyber-sleuth-sample-1.jpg", ResourceType.GAMES, sampleWidth, sampleHeight, Image.SCALE_AREA_AVERAGING));
 
+		registerGame("Secrets of Grindea",
+			Resources.getImageIconResized("secrets-of-grindea-banner.jpg", ResourceType.GAMES, bannerWidth, bannerHeight, Image.SCALE_AREA_AVERAGING),
+			Resources.getImageIconResized("secrets-of-grindea-sample-1.jpg", ResourceType.GAMES, sampleWidth, sampleHeight, Image.SCALE_AREA_AVERAGING));
 	}
 	
 	private void registerGame(String name, ImageIcon banner, ImageIcon... samples) {
