@@ -1,7 +1,12 @@
 package maets.screen.secondarypanels.storepanel;
 
-import javax.swing.JButton;
+import java.awt.Color;
+import java.awt.Font;
+
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class GamePanel extends JPanel {
 
@@ -13,20 +18,47 @@ public class GamePanel extends JPanel {
 		this.gameName = "";
 		setBounds(490, 110, 1510, 970);
 		setLayout(null);
+		
+		populatePanel(this.gameName, new ImageIcon[1]);
 	}
 	
-	protected void populatePanel(String gameName) {
+	protected void populatePanel(String gameName, ImageIcon[] samples) {
 		this.gameName = gameName;
 		
-		JButton btnNewButton = new JButton(gameName);
-		btnNewButton.setBounds(0, 852, 228, 169);
-		add(btnNewButton);
+		JLabel gameTitle = new JLabel(gameName);
+		gameTitle.setBounds(0, 0, 1510, 100);
+		gameTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 50));
+		gameTitle.setForeground(Color.WHITE);
+		gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		add(gameTitle);
+		
+		JLabel gameImage = new JLabel(samples[0]);
+		gameImage.setBounds(20, 120, 900, 600);
+		add(gameImage);
+		
+		JLabel aboutTitle = new JLabel("About this game");
+		aboutTitle.setBounds(900, 110, 300, 50);
+		aboutTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
+		add(aboutTitle);
+		
+		JLabel aboutDescription = new JLabel("bla\nbla\nbla\nbla\nbla");
+		aboutDescription.setBounds(900, 170, 510, 160);
+		add(aboutDescription);
+		
+		JLabel requirementsTitle = new JLabel("System Requirements");
+		requirementsTitle.setBounds(900, 340, 300, 50);
+		requirementsTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
+		add(requirementsTitle);
+		
+		JLabel requirementsDescription = new JLabel("blo\nblo\nblo\nblo\nblo");
+		requirementsDescription.setBounds(900, 400, 510, 300);
+		add(requirementsDescription);
 	}
 	
-	protected void repopulatePanel(String gameName) {
+	protected void repopulatePanel(String gameName, ImageIcon[] samples) {
 		removeAll();
 		repaint();
-		populatePanel(gameName);
+		populatePanel(gameName, samples);
 	}
 	
 	protected String getGameName() {
