@@ -58,7 +58,7 @@ public class SearchBoxPanel extends JPanel {
 		    	JLabel label = (JLabel) super.getListCellRendererComponent(list, value, index, false, cellHasFocus);
 		    	label.setText(null);
 
-		    	Icon icon = gt.getIcon((String) value);
+		    	Icon icon = gt.getBanner((String) value);
 		        label.setIcon(icon);
 		        
 		        label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -76,7 +76,7 @@ public class SearchBoxPanel extends JPanel {
 				String selectedGame = list.getSelectedValue();
 				if(e.getValueIsAdjusting() || selectedGame == null || gamePanel.getGameName().equals(selectedGame)) return;
 				
-				gamePanel.repopulatePanel(selectedGame);
+				gamePanel.repopulatePanel(selectedGame, gt.getSamples(selectedGame));
 			}
 		});
 		list.addMouseListener(new MouseAdapter() {
