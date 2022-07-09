@@ -1,7 +1,10 @@
-package maets.download;
+package maets.download.cloudservices;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+
+import maets.download.CloudStorageDownloader;
+import maets.download.SocketConnection;
 
 public class AnonFiles extends CloudStorageDownloader {
 	

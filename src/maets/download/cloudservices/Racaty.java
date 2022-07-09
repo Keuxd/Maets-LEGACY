@@ -1,7 +1,10 @@
-package maets.download;
+package maets.download.cloudservices;
 
 import java.io.IOException;
 import java.net.CookiePolicy;
+
+import maets.download.CloudStorageDownloader;
+import maets.download.SocketConnection;
 
 public class Racaty extends CloudStorageDownloader {
 

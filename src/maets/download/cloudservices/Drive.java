@@ -1,7 +1,9 @@
-package maets.download;
+package maets.download.cloudservices;
 
 import java.io.IOException;
 import java.net.URL;
+
+import maets.download.CloudStorageDownloader;
 
 public class Drive extends CloudStorageDownloader {
 	
