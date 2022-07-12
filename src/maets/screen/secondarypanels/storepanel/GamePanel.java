@@ -30,10 +30,16 @@ public class GamePanel extends JPanel {
 		gameTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 50));
 		gameTitle.setForeground(Color.WHITE);
 		gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
+		
+		int stringWidth = (int) gameTitle.getFontMetrics(gameTitle.getFont()).stringWidth(gameTitle.toString());
+		if(stringWidth > 8055) {
+			gameTitle.setHorizontalAlignment(SwingConstants.LEFT);
+			gameTitle.setSize(getWidth(), gameTitle.getHeight());
+		}
 		add(gameTitle);
 		
 		JLabel gameImage = new JLabel(samples[0]);
-		gameImage.setBounds(20, 120, 900, 600);
+		gameImage.setBounds(20, 120, samples[0].getIconWidth(), samples[0].getIconHeight());
 		add(gameImage);
 		
 		JLabel aboutTitle = new JLabel("About this game");
