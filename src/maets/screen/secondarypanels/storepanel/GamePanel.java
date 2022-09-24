@@ -2,31 +2,41 @@ package maets.screen.secondarypanels.storepanel;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Image;
+import java.awt.event.MouseEvent;
+import java.io.IOException;
 
+import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
+
+import maets.core.Resources;
+import maets.core.Resources.ResourceType;
+import maets.screen.mainpanel.ResizableButtonsResponsivity;
 
 public class GamePanel extends JPanel {
 
 	private static final long serialVersionUID = -8271674911298891309L;
 
 	private String gameName;
+	private JFrame parentFrame;
 	
-	public GamePanel() {
+	public GamePanel(JFrame parentFrame) {
 		this.gameName = "";
+		this.parentFrame = parentFrame;
 		setBounds(490, 110, 1510, 970);
 		setLayout(null);
-		
-		populatePanel(this.gameName, new ImageIcon[1]);
 	}
 	
-	protected void populatePanel(String gameName, ImageIcon[] samples) {
+	protected void populatePanel(String gameName, ImageIcon sample, String[] gameDescription) {
 		this.gameName = gameName;
 		
 		JLabel gameTitle = new JLabel(gameName);
-		gameTitle.setBounds(0, 0, 1510, 100);
+		gameTitle.setBounds(20, 0, 960, 100);
 		gameTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 50));
 		gameTitle.setForeground(Color.WHITE);
 		gameTitle.setHorizontalAlignment(SwingConstants.CENTER);
@@ -38,33 +48,40 @@ public class GamePanel extends JPanel {
 		}
 		add(gameTitle);
 		
-		JLabel gameImage = new JLabel(samples[0]);
-		gameImage.setBounds(20, 120, samples[0].getIconWidth(), samples[0].getIconHeight());
+		JLabel gameImage = new JLabel(sample);
+		gameImage.setBounds(20, 120, sample.getIconWidth(), sample.getIconHeight());
+		gameImage.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
 		add(gameImage);
 		
-		JLabel aboutTitle = new JLabel("About this game");
-		aboutTitle.setBounds(900, 110, 300, 50);
-		aboutTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
+		JLabel aboutTitle = new JLabel("<html><u>About this game</u></html>");
+		aboutTitle.setBounds(1000, 120, 300, 50);
+		aboutTitle.setFont(new Font("Nirmala UI", Font.BOLD, 35));
 		add(aboutTitle);
 		
-		JLabel aboutDescription = new JLabel("bla\nbla\nbla\nbla\nbla");
-		aboutDescription.setBounds(900, 170, 510, 160);
+		JLabel aboutDescription = new JLabel(gameDescription[0]);
+		aboutDescription.setBounds(1000, 170, 420, 220);
+		aboutDescription.setFont(new Font("Nirmala UI", Font.PLAIN, 20));
+		aboutDescription.setVerticalAlignment(SwingConstants.TOP);
+		aboutDescription.setHorizontalAlignment(SwingConstants.LEFT);
 		add(aboutDescription);
 		
-		JLabel requirementsTitle = new JLabel("System Requirements");
-		requirementsTitle.setBounds(900, 340, 300, 50);
-		requirementsTitle.setFont(new Font("Nirmala UI", Font.PLAIN, 30));
+		JLabel requirementsTitle = new JLabel("<html><u>System Requirements</u></html>");
+		requirementsTitle.setBounds(1000, 390, 380, 50);
+		requirementsTitle.setFont(new Font("Nirmala UI", Font.BOLD, 35));
 		add(requirementsTitle);
 		
-		JLabel requirementsDescription = new JLabel("blo\nblo\nblo\nblo\nblo");
-		requirementsDescription.setBounds(900, 400, 510, 300);
+		JLabel requirementsDescription = new JLabel(gameDescription[1]);
+		requirementsDescription.setBounds(1000, 440, 420, 640);
+		requirementsDescription.setFont(new Font("Nirmala UI", Font.PLAIN, 20));
+		requirementsDescription.setVerticalAlignment(SwingConstants.TOP);
+		requirementsDescription.setHorizontalAlignment(SwingConstants.LEFT);
 		add(requirementsDescription);
 	}
 	
-	protected void repopulatePanel(String gameName, ImageIcon[] samples) {
+	protected void repopulatePanel(String gameName, ImageIcon gameSample, String[] gameDescriptions) {
 		removeAll();
 		repaint();
-		populatePanel(gameName, samples);
+		populatePanel(gameName, gameSample, gameDescriptions);
 	}
 	
 	protected String getGameName() {
