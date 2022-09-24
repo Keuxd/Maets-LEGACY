@@ -18,6 +18,7 @@ import maets.core.Resources.ResourceType;
 import maets.screen.FrameManager;
 import maets.screen.FrameManager.TransitionSide;
 import maets.screen.mainpanel.ResizableButtonsResponsivity;
+import maets.screen.secondarypanels.librarypanel.LibraryPanel;
 import maets.screen.secondarypanels.storepanel.StorePanel;
 
 public class MidPanel extends JPanel {
@@ -53,7 +54,7 @@ public class MidPanel extends JPanel {
 		libraryButton.addMouseListener(new ResizableButtonsResponsivity(libraryButton) {
 			@Override
 			public void fixedMouseClicked(MouseEvent e) {
-				System.out.println("Warning 2");
+				FrameManager.contentPaneTransition(parentFrame, new LibraryPanel(parentFrame), TransitionSide.UP, 60);
 			}
 		});
 		add(libraryButton);
