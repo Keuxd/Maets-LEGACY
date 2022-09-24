@@ -8,7 +8,7 @@ import java.awt.event.MouseEvent;
 import javax.swing.JComponent;
 import javax.swing.Timer;
 
-public class ResizableButtonsResponsivity extends ButtonsResponsivityMouseAdapter{
+public class ResizableButtonsResponsivity extends ButtonsResponsivityMouseAdapter {
 
 	private Rectangle originalButtonBounds;
 	private Timer resizeTimer;
