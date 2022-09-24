@@ -15,12 +15,15 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import maets.core.Cache.CacheType;
+import maets.core.ConfigFile.Configs;
 import maets.games.GamesTable;
 import maets.mega.Mega;
 import maets.screen.MainFrame;
 import maets.screen.login.LoginFrame;
 
 public class Main {
+	
+	public static ConfigFile cf;
 
 	public static void main(String[] args) throws IOException {
 		
@@ -35,7 +38,8 @@ public class Main {
 		
 		try {
 			Mega.init();
-			Cache.set(CacheType.GAMES_TABLE, new GamesTable(460, 215, 900, 600));
+			initializeConfigFile();
+			Cache.set(CacheType.GAMES_TABLE, new GamesTable(460, 215, 960, 640));
 			
 			if(!Mega.isLoggedIn()) {
 				new LoginFrame().setVisible(true);
@@ -53,6 +57,13 @@ public class Main {
 //		int a = fc.showOpenDialog(null);
 //		String name = fc.getSelectedFile().getName();
 //		System.out.println(name + " -> " + a);
+	}
+	
+	private static void initializeConfigFile() throws IOException {
+		final String defaultFolder = "C:\\Maets";
+		
+		cf = new ConfigFile(Configs.class);
+		cf.initializeFile(defaultFolder);
 	}
 	
 	public static void unexpectedError(String errorMessage, JFrame currentFrame) {
