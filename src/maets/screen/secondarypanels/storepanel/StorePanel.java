@@ -20,7 +20,7 @@ public class StorePanel extends JPanel {
 		JPanel topBarPanel = new TopBarPanel(parentFrame, MainPanel.class, "Store");
 		add(topBarPanel);
 		
-		GamePanel gamePanel = new GamePanel();
+		GamePanel gamePanel = new GamePanel(parentFrame);
 		add(gamePanel);
 
 		JPanel searchBoxPanel = new SearchBoxPanel(parentFrame, gamePanel);
