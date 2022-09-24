@@ -1,6 +1,7 @@
 package maets.core;
 
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 
@@ -68,6 +69,10 @@ public class Main {
 	
 	public static void unexpectedError(String errorMessage, JFrame currentFrame) {
 		try {
+			final Runnable runnable = (Runnable) Toolkit.getDefaultToolkit().getDesktopProperty("win.sound.exclamation");
+			if(runnable != null)
+				runnable.run();
+			
 			JLabel errorLabel = new JLabel(errorMessage);
 			errorLabel.setFont(new Font("Nirmala UI", Font.PLAIN, 18));
 			JOptionPane.showMessageDialog(null, errorLabel, "Unexpected Error", JOptionPane.ERROR_MESSAGE);
