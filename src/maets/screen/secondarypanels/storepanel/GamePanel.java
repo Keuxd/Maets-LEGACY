@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
+import maets.core.ConfigFile.Configs;
+import maets.core.Main;
 import maets.core.Resources;
 import maets.core.Resources.ResourceType;
 import maets.screen.mainpanel.ResizableButtonsResponsivity;
@@ -76,6 +78,32 @@ public class GamePanel extends JPanel {
 		requirementsDescription.setVerticalAlignment(SwingConstants.TOP);
 		requirementsDescription.setHorizontalAlignment(SwingConstants.LEFT);
 		add(requirementsDescription);
+		
+		
+		try {
+			if(Main.cf.isValueInConfig(Configs.GAMES_IN_LIBRARY, gameName))
+				return;
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+			
+		JButton addToLibrary = new JButton("Add to library");
+		addToLibrary.setBounds(((gameImage.getWidth() / 2) + gameImage.getX()) - (420 / 2), gameImage.getY() + gameImage.getHeight() + 45, 420, 120);
+		addToLibrary.setFont(new Font("Nirmala UI Semilight", Font.BOLD, 50));
+		addToLibrary.setFocusable(false);
+		addToLibrary.setIcon(Resources.getImageIconEvenResized("library.png", ResourceType.UI, 60, Image.SCALE_AREA_AVERAGING));
+		addToLibrary.addMouseListener(new ResizableButtonsResponsivity(addToLibrary) {
+			@Override
+			public void fixedMouseClicked(MouseEvent e) {
+				try {
+					addToLibrary.setVisible(false);
+					Main.cf.addValueToConfig(Configs.GAMES_IN_LIBRARY, gameName);
+				} catch (IOException e1) {
+					Main.unexpectedError("Couldn't add '" + gameName + "' to library: " + e1.getMessage(), parentFrame);
+				}
+			}
+		});
+		add(addToLibrary);
 	}
 	
 	protected void repopulatePanel(String gameName, ImageIcon gameSample, String[] gameDescriptions) {
