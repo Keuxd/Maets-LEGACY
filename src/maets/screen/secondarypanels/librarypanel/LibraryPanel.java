@@ -6,8 +6,6 @@ import javax.swing.JPanel;
 import maets.screen.mainpanel.MainPanel;
 import maets.screen.secondarypanels.TopBarPanel;
 
-import javax.swing.JButton;
-
 public class LibraryPanel extends JPanel {
 	
 	private static final long serialVersionUID = -446617019024012558L;
@@ -22,9 +20,7 @@ public class LibraryPanel extends JPanel {
 		JPanel topBarPanel = new TopBarPanel(parentFrame, MainPanel.class, "Library");
 		add(topBarPanel);
 		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(76, 183, 596, 173);
-		add(btnNewButton);
-		
+		JPanel middleGamesPanel = new GamesPanel(parentFrame);
+		add(middleGamesPanel);
 	}
 }
