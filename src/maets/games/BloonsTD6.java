@@ -4,7 +4,6 @@ import java.io.File;
 import java.io.FilenameFilter;
 import java.io.IOException;
 
-import com.github.junrar.Junrar;
 import com.github.junrar.exception.RarException;
 
 import maets.core.ExtractUtil;
