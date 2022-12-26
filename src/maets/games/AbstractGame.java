@@ -26,6 +26,8 @@ public abstract class AbstractGame {
 	
 	public abstract void uninstall();
 	
+	public abstract void run() throws Exception;
+	
 	public void updateRemoteSave(boolean createBackupSave) throws MegaException {
 		String pathToRemove = (createBackupSave) ? "/Backup/" : "/Current/" ;
 		

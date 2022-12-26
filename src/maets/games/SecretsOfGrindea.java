@@ -26,4 +26,10 @@ public class SecretsOfGrindea extends AbstractGame {
 		
 	}
 
+	@Override
+	public void run() throws Exception {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

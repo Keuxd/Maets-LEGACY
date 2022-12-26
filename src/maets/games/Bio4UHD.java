@@ -20,4 +20,10 @@ public class Bio4UHD extends AbstractGame {
 	public void uninstall() {
 
 	}
+
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		
+	}
 }
