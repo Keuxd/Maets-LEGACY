@@ -82,6 +82,19 @@ public class ConfigFile {
 		fWriter.close();
 	}
 	
+	private void writeDefaultInfoInConfigFileChannel() throws IOException {
+		StringBuilder sb = new StringBuilder();
+		
+		for(String config : configurationsInFile) {
+			sb.append(config);
+			sb.append(CONFIG_VALUE_SEPARATOR + CONFIGS_SEPARATOR);
+		}
+		
+		byte[] byteArray = sb.toString().getBytes();
+		ByteBuffer buffer = ByteBuffer.wrap(byteArray);
+		configFileChannel.write(buffer, 0);
+	}
+	
 	public void addValueToConfig(Enum<?> e, String value) throws IOException {
 		addValueToConfig(e.name(), value);
 	}
