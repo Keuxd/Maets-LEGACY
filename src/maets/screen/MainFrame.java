@@ -27,6 +27,8 @@ public class MainFrame extends JFrame {
 		
 		MainPanel mp = new MainPanel(this);
 		setContentPane(mp);
+		
+//		setOpacity(0.90f);
 	}
 	
 	public static BufferedImage resize(BufferedImage img, int newSize) { 
