@@ -24,6 +24,7 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	protected JComponent button;
 	protected ImageIcon originalImageIcon;
 	private Border defaultButtonBorder;
+	private double imageOnClickModifier;
 	
 	public ButtonsResponsivityMouseAdapter(JComponent button) {
 		this.button = button;
@@ -31,6 +32,16 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 		
 		this.defaultButtonBorder = UIManager.getBorder("Button.border");
 		button.setBorder(this.defaultButtonBorder);
+		this.imageOnClickModifier = 2.0; // Half of the image size
+	}
+	
+	public ButtonsResponsivityMouseAdapter(JComponent button, double imageOnClickModifier) {
+		this.button = button;
+		this.originalImageIcon = convertIconToImageIcon(getIconInComponent());
+		
+		this.defaultButtonBorder = UIManager.getBorder("Button.border");
+		button.setBorder(this.defaultButtonBorder);
+		this.imageOnClickModifier = imageOnClickModifier;
 	}
 	
 	// Should be implemented by it's child class
@@ -58,8 +69,10 @@ public class ButtonsResponsivityMouseAdapter extends MouseAdapter {
 	
 	@Override
 	public void mousePressed(MouseEvent e) {
-		int imageSize = originalImageIcon.getIconHeight() / 2;
-		Image scaledImage = originalImageIcon.getImage().getScaledInstance(imageSize, imageSize, Image.SCALE_SMOOTH);
+		int imageSizeW = (int) Math.round(Math.ceil((double) originalImageIcon.getIconWidth() / imageOnClickModifier));
+		int imageSizeH = (int) Math.round(Math.ceil((double) originalImageIcon.getIconHeight() / imageOnClickModifier));
+		
+		Image scaledImage = originalImageIcon.getImage().getScaledInstance(imageSizeW, imageSizeH, Image.SCALE_SMOOTH);
 		setIconInComponent(new ImageIcon(scaledImage));
 
 		button.setFont(button.getFont().deriveFont((float) button.getFont().getSize() / 2));
