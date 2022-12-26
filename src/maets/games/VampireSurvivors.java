@@ -55,10 +55,11 @@ public class VampireSurvivors extends AbstractGame {
 		}
 	}
 	
-	public void run() throws IOException {
-		FilenameFilter dirFilter = new FilenameFilter() {
+	@Override
+	public void run() throws Exception {
+		FileFilter dirFilter = new FileFilter() {
 			@Override
-			public boolean accept(File dir, String name) {
+			public boolean accept(File dir) {
 				return dir.isDirectory();
 			}
 		};
