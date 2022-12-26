@@ -16,7 +16,8 @@ import com.formdev.flatlaf.FlatDarculaLaf;
 import com.formdev.flatlaf.FlatLightLaf;
 
 import maets.core.Cache.CacheType;
-import maets.core.ConfigFile.Configs;
+import maets.core.ConfigFile.LocalConfigs;
+import maets.core.ConfigFile.OnlineConfigs;
 import maets.games.GamesTable;
 import maets.mega.Mega;
 import maets.screen.MainFrame;
@@ -24,7 +25,8 @@ import maets.screen.login.LoginFrame;
 
 public class Main {
 	
-	public static ConfigFile cf;
+	public static ConfigFile local;
+	public static ConfigFile online;
 
 	public static void main(String[] args) throws IOException {
 		
@@ -39,8 +41,8 @@ public class Main {
 		
 		try {
 			Mega.init();
-			initializeConfigFile();
 			Cache.set(CacheType.GAMES_TABLE, new GamesTable(460, 215, 960, 640));
+			initializeConfigFiles();
 			
 			if(!Mega.isLoggedIn()) {
 				new LoginFrame().setVisible(true);
@@ -60,11 +62,55 @@ public class Main {
 //		System.out.println(name + " -> " + a);
 	}
 	
-	private static void initializeConfigFile() throws IOException {
+	private static void initializeConfigFiles() throws IOException {
 		final String defaultFolder = "C:\\Maets";
 		
-		cf = new ConfigFile(Configs.class);
-		cf.initializeFile(defaultFolder);
+		local = new ConfigFile(LocalConfigs.class);
+		local.initializeFile(defaultFolder, "local");
+		
+		online = new ConfigFile(OnlineConfigs.class);
+		online.initializeFile(defaultFolder, "online");
+		
+		
+		String[] gameStatus = local.getValuesFromConfig(LocalConfigs.GAMES_STATUS);
+		int gamesAmount = ((GamesTable) Cache.get(CacheType.GAMES_TABLE)).getNames().size();
+		
+		// Initialize games status for first execution 
+		if(gameStatus == null) {
+			for(int i = 0; i < gamesAmount; i++) {
+				local.addValueToConfig(LocalConfigs.GAMES_STATUS, "0");
+			}
+			// In case games were added on the way
+		} else if(gameStatus.length < gamesAmount) {
+			for(int i = 0; i < gamesAmount - gameStatus.length; i++) {
+				local.addValueToConfig(LocalConfigs.GAMES_STATUS, "0");
+			}
+		}
+		
+		String[] playTime = online.getValuesFromConfig(OnlineConfigs.PLAY_TIME);
+		
+		if(playTime == null) {
+			for(int i = 0; i < gamesAmount; i++) {
+				online.addValueToConfig(OnlineConfigs.PLAY_TIME, "00:00:00");
+			}
+		} else if(playTime.length < gamesAmount) {
+			for(int i = 0; i < gamesAmount - gameStatus.length; i++) {
+				online.addValueToConfig(OnlineConfigs.PLAY_TIME, "00:00:00");
+			}
+		}
+		
+		String[] lastSession = online.getValuesFromConfig(OnlineConfigs.LAST_SESSION);
+		if(lastSession == null) {
+			for(int i = 0; i < gamesAmount; i++) {
+				online.addValueToConfig(OnlineConfigs.LAST_SESSION, "0");
+			}
+		} else if(lastSession.length < gamesAmount) {
+			for(int i = 0; i < gamesAmount - lastSession.length; i++) {
+				online.addValueToConfig(OnlineConfigs.LAST_SESSION, "0");
+			}
+		}
+		
+		
 	}
 	
 	public static void unexpectedError(String errorMessage, JFrame currentFrame) {
