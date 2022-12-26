@@ -14,7 +14,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-import maets.core.ConfigFile.Configs;
+import maets.core.ConfigFile.OnlineConfigs;
 import maets.core.Main;
 import maets.core.Resources;
 import maets.core.Resources.ResourceType;
@@ -81,7 +81,7 @@ public class GamePanel extends JPanel {
 		
 		
 		try {
-			if(Main.cf.isValueInConfig(Configs.GAMES_IN_LIBRARY, gameName))
+			if(Main.online.isValueInConfig(OnlineConfigs.GAMES_IN_LIBRARY, gameName))
 				return;
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -97,7 +97,7 @@ public class GamePanel extends JPanel {
 			public void fixedMouseClicked(MouseEvent e) {
 				try {
 					addToLibrary.setVisible(false);
-					Main.cf.addValueToConfig(Configs.GAMES_IN_LIBRARY, gameName);
+					Main.online.addValueToConfig(OnlineConfigs.GAMES_IN_LIBRARY, gameName);
 				} catch (IOException e1) {
 					Main.unexpectedError("Couldn't add '" + gameName + "' to library: " + e1.getMessage(), parentFrame);
 				}

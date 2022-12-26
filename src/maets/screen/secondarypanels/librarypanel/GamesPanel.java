@@ -11,7 +11,7 @@ import javax.swing.JPanel;
 
 import maets.core.Cache;
 import maets.core.Cache.CacheType;
-import maets.core.ConfigFile.Configs;
+import maets.core.ConfigFile.OnlineConfigs;
 import maets.core.Main;
 import maets.games.GamesTable;
 import maets.screen.FrameManager;
@@ -32,7 +32,7 @@ public class GamesPanel extends JPanel {
 		
 		String[] games = null;
 		try {
-			games = Main.cf.getValuesFromConfig(Configs.GAMES_IN_LIBRARY);
+			games = Main.local.getValuesFromConfig(OnlineConfigs.GAMES_IN_LIBRARY);
 		} catch (IOException e) {
 			Main.unexpectedError(e.getMessage(), parentFrame);
 		}
