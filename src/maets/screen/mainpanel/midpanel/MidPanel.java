@@ -24,7 +24,7 @@ import maets.screen.secondarypanels.storepanel.StorePanel;
 public class MidPanel extends JPanel {
 
 	private static final long serialVersionUID = 3896718565332803227L;
-
+	
 	public MidPanel(JFrame parentFrame) {
 		setBounds(0, 200, 1920, 400);
 		setLayout(null);

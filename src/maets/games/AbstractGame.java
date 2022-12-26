@@ -9,7 +9,7 @@ import maets.mega.exceptions.MegaException;
 import maets.mega.exceptions.MegaInvalidRemotePathException;
 
 public abstract class AbstractGame {
-
+	
 	private String defaultLocalSavePath;
 	private String saveFolderName;
 	private String defaultRemoteSavePath;

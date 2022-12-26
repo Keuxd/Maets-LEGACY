@@ -34,7 +34,7 @@ public class VampireSurvivors extends AbstractGame {
 				return name.endsWith(".rar");
 			}
 		})[0];
-
+		
 		System.out.println("Starting extraction...");
 		ExtractUtil.extract(rar.getPath(), DEFAULT_PATH);
 		System.out.println("Finishing extraction...");

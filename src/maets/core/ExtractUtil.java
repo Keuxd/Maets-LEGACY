@@ -14,7 +14,7 @@ import com.github.junrar.exception.RarException;
 public class ExtractUtil {
 	
 	private ExtractUtil() {}
-
+	
 	public static void extract(String extractionFilePath, String dirPath) throws IOException, RarException {
 		// If non directory is provided then extract the zip/rar in the same folder
 		if(dirPath == null || dirPath.isEmpty()) {
