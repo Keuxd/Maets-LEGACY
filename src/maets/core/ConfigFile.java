@@ -12,8 +12,12 @@ import java.util.List;
 
 public class ConfigFile {
 	
-	public enum Configs {
-		GAMES_IN_LIBRARY, 
+	public enum LocalConfigs {
+		GAMES_STATUS
+	}
+	
+	public enum OnlineConfigs {
+		GAMES_IN_LIBRARY, PLAY_TIME, LAST_SESSION
 	}
 	
 	private final String CONFIG_VALUE_SEPARATOR = "<";
