@@ -50,6 +50,7 @@ public class TopBarPanel extends JPanel {
 		JLabel screenTitleLabel = new JLabel(screenTitle);
 		screenTitleLabel.setFont(new Font("Nirmala UI", Font.PLAIN, 70));
 		screenTitleLabel.setBounds(117, 5, 1166, 100);
+		screenTitleLabel.setForeground(Color.WHITE);
 		add(screenTitleLabel);
 		
 		// TimerPanel was made for MainPanel bounds so we gotta adjust it manually
