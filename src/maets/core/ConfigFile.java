@@ -41,10 +41,10 @@ public class ConfigFile {
 		this.configurationsInFile = configurationsInFile;
 	}
 
-	public void initializeFile(String folderPath) throws IOException {
+	public void initializeFile(String folderPath, String fileName) throws IOException {
 		if(configFile != null) throw new IOException("File already initialized");
 		
-		configFile = new File(folderPath + "\\config.ini");
+		configFile = new File(folderPath + "\\" + fileName + ".ini");
 		configFile.getParentFile().mkdir();
 		
 		// If true then the file didn't exist previously (Sucessfuly created)
