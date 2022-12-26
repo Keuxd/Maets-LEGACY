@@ -23,25 +23,24 @@ public class VampireSurvivors extends AbstractGame {
 		File dir = new File(DEFAULT_PATH);
 		dir.mkdirs();
 		
-//		AnonFiles.downloadFile("nfZd9cRcx9", DEFAULT_PATH + "\\VampireS.rar");
-		Drive.downloadFile("1IzGPOp8SNwejGs8n-86-xZCQRawGA3xR", DEFAULT_PATH + "\\VampireS.rar");
+		Drive.downloadFile("12kVjCc4Cc48ZROvjKu3qTcP-EIVLwTc5", DEFAULT_PATH + "\\VampireS.zip");
 	}
 
 	@Override
 	public void install() throws IOException, RarException {		
-		File rar = new File(DEFAULT_PATH).listFiles(new FilenameFilter() {
+		File zip = new File(DEFAULT_PATH).listFiles(new FilenameFilter() {
 			@Override
 			public boolean accept(File dir, String name) {
-				return name.endsWith(".rar");
+				return name.endsWith(".zip");
 			}
 		})[0];
 		
 		System.out.println("Starting extraction...");
-		ExtractUtil.extract(rar.getPath(), DEFAULT_PATH);
+		ExtractUtil.extract(zip.getPath(), DEFAULT_PATH);
 		System.out.println("Finishing extraction...");
 		
-		if(rar.delete()) {
-			System.out.println("Rar file deleted successfully");
+		if(zip.delete()) {
+			System.out.println("Zip file deleted successfully");
 		} else {
 			System.out.println("ERROR - Rar file not deleted");
 		}
