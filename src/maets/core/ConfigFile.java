@@ -131,6 +131,32 @@ public class ConfigFile {
 		configFileChannel.write(buffer, 0);
 	}
 	
+	public void changeValueInConfig(Enum<?> e, int index, String newValue) throws IOException {
+		changeValueInConfig(e.name(), index, newValue);
+	}
+	
+	public void changeValueInConfig(String config, int index, String newValue) throws IOException {
+		String[] configsAndValues = getContentByConfig();
+		configFileChannel.truncate(0);
+		writeDefaultInfoInConfigFileChannel();
+		
+		for(int i = 0; i < configsAndValues.length; i++) {
+			String[] configAndValue = configsAndValues[i].split(CONFIG_VALUE_SEPARATOR);
+			
+			if(configAndValue.length > 1) {
+				String[] values = configAndValue[1].split(VALUES_SEPARATOR);
+				
+				if(configAndValue[0].equals(config)) {
+					values[index] = newValue;
+				}
+				
+				for(String value : values) {
+					addValueToConfig(configAndValue[0], value);
+				}
+			}
+		}
+	}
+	
 	public String[] getValuesFromConfig(Enum<?> e) throws IOException {
 		return getValuesFromConfig(e.name());
 	}
