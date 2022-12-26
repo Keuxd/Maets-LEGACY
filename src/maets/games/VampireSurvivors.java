@@ -67,6 +67,6 @@ public class VampireSurvivors extends AbstractGame {
 		File firstGameFolder = new File(DEFAULT_PATH).listFiles(dirFilter)[0];
 		File secondGameFolder = firstGameFolder.listFiles(dirFilter)[0];
 		
-		Runtime.getRuntime().exec(secondGameFolder.getPath() + "\\VampireSurvivors.exe", null, secondGameFolder);
+		Runtime.getRuntime().exec(secondGameFolder.getPath() + "\\VampireSurvivors.exe", null, secondGameFolder).waitFor();
 	}
 }
